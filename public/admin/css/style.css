@@ -6,6 +6,8 @@ h4 { font-size: 14px }
 h5 { font-size: 12px }
 h6 { font-size: 10px }
 h3, h4, h5 { margin-top: 5px; font-weight: 600 }
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{border-radius:10px;background:rgba(255,95,51,.7)}::-webkit-scrollbar-thumb:window-inactive{background:rgba(255,95,51,.6)}::-webkit-scrollbar-thumb:vertical:hover{background-color:rgba(255,95,51,.8)}::-webkit-scrollbar-thumb:vertical:active{background-color:rgba(255,95,51,1)}
+.fr{margin-right:10px;}
 .mg0 { margin: 0 !important; }
 a:focus { outline: 0 }
 .nav>li>a { color: #a7b1c2; font-weight: 600; padding: 14px 20px 14px 25px }
@@ -141,7 +143,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side { display: block; width: 70p
 .menu-visible-lg, .menu-visible-md { display: block!important }
 }
 .btn { border-radius: 3px }
-.float-e-margins .btn { margin-bottom: 5px }
+.float-e-margins .btn { margin-bottom: 5px;line-height: 25px;}
 .btn-w-m { min-width: 120px }
 .btn-primary.btn-outline { color: #1ab394 }
 .btn-success.btn-outline { color: #1c84c6 }
@@ -624,7 +626,7 @@ nav.page-tabs .page-tabs-content { float: left }
 .roll-right.btn-group button { width: 80px }
 .roll-right.J_tabExit { background: #fff; height: 40px; width: 60px; outline: 0 }
 .dropdown-menu-right { left: auto }
-#content-main { height: calc(100% - 140px); overflow: hidden }
+#content-main { height: calc(100% - 37px); overflow: hidden }
 .fixed-nav #content-main { height: calc(100% - 80px); overflow: hidden }
 .table-bordered { border: 1px solid #EBEBEB }
 .table-bordered>thead>tr>td, .table-bordered>thead>tr>th { background-color: #F5F5F6 }
@@ -685,7 +687,7 @@ table.table-mail tr td { padding: 12px }
 .ibox-content { clear: both }
 .ibox-heading { background-color: #f3f6fb; border-bottom: none }
 .ibox-heading h3 { font-weight: 200; font-size: 24px }
-.ibox-title h5 { display: inline-block; font-size: 14px; margin: 0 0 7px; padding: 0; text-overflow: ellipsis; float: left }
+.ibox-title h5 { display: inline-block; font-size: 14px; margin: 0 0 7px; padding: 0; text-overflow: ellipsis; float: left;font-size: 18px;}
 .ibox-title .label { float: left; margin-left: 4px }
 .ibox-tools { display: inline-block; float: right; margin-top: 0; position: relative; padding: 0 }
 .ibox-tools a { cursor: pointer; margin-left: 5px; color: #c4c4c4 }
@@ -1655,3 +1657,143 @@ body.fixed-sidebar.mini-navbar .navbar-static-side { width: 0 }
 
 .switchery { background-color: #fff; border: 1px solid #dfdfdf; border-radius: 20px; cursor: pointer; display: inline-block; height: 30px; position: relative; vertical-align: middle; width: 50px; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; }
 .switchery > small { background: #fff; border-radius: 100%; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); height: 30px; position: absolute; top: 0; width: 30px; }
+
+/* 马上续费 */
+.bgBox{background-color: #fff;height:100%;min-height: 600px;}
+.renewal{text-decoration: underline;margin-left: 10px;}
+.renewal:hover{text-decoration: underline;color:red;}
+.renewalNow{
+	width: 90px;
+    background: #d43f3a;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin: 0px 16px;
+    border: 1px solid #d43f3a;
+    color: #fff
+}
+.renewalNow:hover{background: #ec4758;color: #fff}
+
+/* 续费页面 */
+.nenewTit{
+	height: 50px;
+    line-height: 49px;
+    text-indent: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+}
+.paybtn {
+    margin-top: 30px;
+}
+.paybtn button {
+    width: 447px;
+    height: 64px;
+    background-color: #eee;
+    margin-top: 10px;
+    cursor: pointer;
+    color: #7c7c7c;
+    display: block;
+    border: 0;
+    font-size: 18px;
+}
+.paybtn button.active {
+    background-image: url(../../Home/image/dakuang.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.pay-modia h1{margin: 40px 0 10px 0;}
+.pay-modia ul li {
+    float: left;
+    width: 192px;
+    height: 60px;
+    cursor: pointer;
+    background-image: url(../../Home/image/paybao.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.pay-modia ul li:nth-child(2) {
+    background-image: url(../../Home/image/wxpay.png);
+    margin-left: 50px;
+}
+.pay-modia ul li.active {
+    background-position: 0 -68px;
+}
+
+.marginTop30 {
+    margin-top: 30px;
+}
+.layui-input.inputWidth240 {
+    width: 240px;
+}
+.layui-input.inputWidth320 {
+    width: 320px;
+}
+.invoice .layui-form-label {
+    width: 130px;
+}
+.common_select select {
+    width: 103px;
+    border: 1px solid #e6e6e6;
+    line-height: 38px;
+    height: 38px;
+    margin-right: 1px;
+}
+.invoiceAddress{width: 320px;height: 54px;line-height: 20px;padding: 6px;border: 1px solid #ddd;border-radius: 2px;}
+.passOpenClass .layui-layer-btn .layui-layer-btn0, .passOpenClass .layui-layer-btn .layui-layer-btn1 {
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    background-color: #c92538;
+    border-radius: 0;
+    font-size: 15px;
+    border-color: #c92538;
+    margin: 20px;
+    text-align: center;
+}
+.passOpenClass .layui-layer-btn .layui-layer-btn1 {
+    background-color: #fff;
+    color: #333;
+    border-color: #e6e6e6;
+    margin-left: 12px;
+}
+
+.msg{width:100%;background:#fff;padding: 20px 15px;}
+.msg dl{width:800px;border:1px dashed #1ab394;color: #1ab394;padding: 15px 15px 12px;overflow: hidden;}
+.msg dl dt{float:left;margin-right: 16px;}
+.msg dl dt img{margin-top: 12px;}
+.msg dl dd{float:left;}
+.msg dl dd p{line-height: 26px;}
+.alert-href {
+    color: red;
+}
+
+
+.lookMore{float:right;margin-top: -25px;margin-right: 30px;}
+.lookMore:hover{color:red;}
+
+
+/*权限组*/
+.ncap-form-all .min{font-size: 0;color: #777;background-color: #FFF;  padding: 12px 0;  margin-top: -1px;  border-style: solid;  border-width: 1px 0;  border-color: #F0F0F0;  position: relative;  z-index: 1;}
+.ncap-form-all .min .tit {text-align: right;width: 14%;font-size: 12px;line-height: 24px;vertical-align: top;letter-spacing: normal;display: inline-block;}
+.ncap-account-all { padding-left: 1%; }
+.ncap-account-container { line-height: 20px; display: block; min-height: 20px; padding: 15px 0 10px 0; border-top: dotted 1px #CCC; }
+.ncap-account-container:nth-child(even) { background: #FDFDFD; }
+.ncap-account-container:hover { background: #F4FCFA; }
+.ncap-account-container h4 { margin-top: 1px; font-size: 12px; font-weight: normal; color: #777; text-align: right; vertical-align: top; display: inline-block; *display: inline/*IE7*/;
+    width: 11%; margin-right: 1%; *zoom: 1;
+}
+.ncap-account-container-list { font-size: 0; *word-spacing:-1px/*IE6、7*/;
+    vertical-align: top; display: inline-block; *display: inline/*IE7*/;
+    width: 86%; padding-left: 1%; border-left: dotted 1px #CCC; *zoom: 1;
+}
+.ncap-account-container-list li { font-size: 12px; line-height: 20px; color: #999; vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; *display: inline/*IE7*/;
+    width: 150px; height: 20px; margin-bottom: 5px; *zoom: 1;
+}
+.ncap-account-container-list li .checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+    zoom: 1;
+}

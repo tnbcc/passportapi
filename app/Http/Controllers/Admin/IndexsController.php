@@ -18,6 +18,6 @@ class IndexsController extends Controller
 
     public function main()
     {
-        return 111;
+        return view('admin.indexs.main');
     }
 }

@@ -227,7 +227,8 @@ function uphtml(_obj,obj,url){
 * div 接收域类名
 * num 上传的数量
 */
-function fileActive(data,div,num,fileext){
+function fileActive(data,div,num,fileext,type){
+	console.log(type);
 	if(num=='1'){
 		div.find("input").val("").val(data.url);
 		layer.closeAll();
@@ -251,10 +252,18 @@ function fileActive(data,div,num,fileext){
 				src = fileImgSrc + "xlsx.png";
 			}else{
 				src = data.url;
-			}	
-			var html='<li><img src="'+src+'" data-name="'+data.name+'"><input name="pics[]" value="'+src+'" type="hidden"><i class="fa fa-close" data-name="'+data.name+'" data-url="'+data.url+'" onclick="delfile(this)"></i></li>';
-			div.parent().find('.pics > ul').append(html);
-			layer.closeAll();
+			}
+
+			if(num >= 5 && num <=10){
+				var input_name = div.find("input").attr('name');	
+				var html='<li><img src="'+src+'" data-name="'+data.name+'"><input name="'+input_name+'[]" value="'+src+'" type="hidden"><i class="fa fa-close" data-name="'+data.name+'" data-url="'+data.url+'" onclick="delfile(this)"></i></li>';
+				div.parent().find('.pics > ul').append(html);
+				layer.closeAll();
+			}else{
+				var html='<li><img src="'+src+'" data-name="'+data.name+'"><input name="pics[]" value="'+src+'" type="hidden"><i class="fa fa-close" data-name="'+data.name+'" data-url="'+data.url+'" onclick="delfile(this)"></i></li>';
+				div.parent().find('.pics > ul').append(html);
+				layer.closeAll();
+			}
 		}
 	}
 }
@@ -350,6 +359,7 @@ function SetStatus(obj,cls,type,id,status,url){
 		data: {id:id,type:type,status:status},  
 		success : function(res) {  
 			if(res.status) {  
+				layer.msg(res.info);
 				$(obj).removeClass("btn-"+cls);
 				$(obj).addClass("btn-"+cl);
 				$(obj).attr("onclick","return SetStatus(this,'"+cl+"','"+type+"','"+id+"','"+st+"','"+url+"');");
