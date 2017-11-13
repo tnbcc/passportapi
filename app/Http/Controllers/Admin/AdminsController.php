@@ -132,4 +132,15 @@ class AdminsController extends BaseController
 
         return redirect()->route('admins.index');
     }
+
+    public function showLoginForm()
+    {
+        return view('admin.admins.login');
+    }
+
+
+    public function login(Request $request)
+    {
+        dd($request->all());
+    }
 }
