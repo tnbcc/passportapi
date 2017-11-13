@@ -11,8 +11,16 @@ class Role extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function admin()
+    public function admins()
     {
-        return $this->belongsToMany(Role::class)->withTimestamps();
+        return $this->belongsToMany(Admin::class)->withTimestamps();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function rules()
+    {
+        return $this->belongsToMany(Rule::class,'role_auth')->withTimestamps();
     }
 }

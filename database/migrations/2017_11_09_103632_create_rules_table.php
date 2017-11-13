@@ -16,7 +16,7 @@ class CreateRulesTable extends Migration
         Schema::create('rules', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->index()->comment('权限名称');
-            $table->string('route',255)->comment('权限路由');
+            $table->string('route',255)->nullable()->comment('权限路由');
             $table->integer('parent_id')->default(0)->unsigned()->index()->comment('上级权限');
             $table->tinyInteger('is_hidden')->default(0)->unsigned()->index()->comment('是否隐藏');
             $table->integer('sort')->default(255)->unsigned()->comment('排序');

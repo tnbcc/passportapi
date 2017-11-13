@@ -36,8 +36,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">权限路径：</label>
                         <div class="col-sm-3">
-                            <input type="text" name="route" value="{{$rule->route}}" class="form-control" required
-                                   data-msg-required="请输入英文名称">
+                            <input type="text" name="route" value="{{$rule->route}}" class="form-control">
                         </div>
                     </div>
                     <div class="hr-line-dashed m-t-sm m-b-sm"></div>
