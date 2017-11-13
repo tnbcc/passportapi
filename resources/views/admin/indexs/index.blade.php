@@ -45,7 +45,7 @@
           <a title="权限管理"> <i class="fa fa-user"></i> <span class="nav-label">权限管理</span> <span class="fa arrow"></span> </a>
           <ul class="nav nav-second-level collapse">
             <li> <a class="J_menuItem" href="{{ route('admins.index') }}" data-index="14">管理员</a> </li>
-            {{--<li> <a class="J_menuItem" href="{{ route('roles') }}" data-index="14">角色管理</a> </li>--}}
+            <li> <a class="J_menuItem" href="{{ route('roles.index') }}" data-index="14">角色管理</a> </li>
             {{--<li> <a class="J_menuItem" href="{{ route('privilegs') }}" data-index="14">权限管理</a> </li>--}}
           </ul>
         </li>

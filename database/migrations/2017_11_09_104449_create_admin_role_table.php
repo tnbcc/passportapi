@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoleAuthsTable extends Migration
+class CreateAdminRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateRoleAuthsTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_auths', function (Blueprint $table) {
+        Schema::create('admin_role', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('admin_id')->index()->comment('管理员id');
             $table->integer('role_id')->index()->comment('角色id');
-            $table->integer('rule_id')->index()->comment('权限id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateRoleAuthsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_auths');
+        Schema::dropIfExists('admin_role');
     }
 }

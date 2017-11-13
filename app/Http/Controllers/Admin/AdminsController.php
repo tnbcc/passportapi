@@ -2,88 +2,134 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin;
+use App\Repositories\RolesRepository;
+use App\Services\AdminsService;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class AdminsController extends Controller
+class AdminsController extends BaseController
 {
+    protected $adminsService;
+
+    protected $rolesRepository;
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * AdminsController constructor.
+     * @param AdminsService $adminsService
+     * @param RolesRepository $rolesRepository
+     */
+    public function __construct(AdminsService $adminsService,RolesRepository $rolesRepository)
+    {
+        $this->adminsService = $adminsService;
+
+        $this->rolesRepository = $rolesRepository;
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $admins = Admin::paginate(20);
+        $admins = $this->adminsService->getAdminsWithRoles();
 
-        return view('admin.admins.index',compact('admins'));
+        return $this->view(null, compact('admins'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        return view('admin.admins.create');
+        $roles = $this->rolesRepository->getRoles();
+
+        return view('admin.admins.create', compact('roles'));
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
+        $this->adminsService->create($request);
 
-        $this->adminsService->create($request->all());
+        flash('添加管理员成功')->success()->important();
 
-        return redirect()->route('admins.index')->with('success', '新建管理员成功.');
+        return redirect()->route('admins.index');
     }
 
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
         $admin = $this->adminsService->ById($id);
 
-        return view('admin.admins.edit',compact('admin'));
+        $roles = $this->rolesRepository->getRoles();
+
+        return view('admin.admins.edit', compact('admin','roles'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        $admin = $this->adminsService->ById($id);
-        $admin ? $admin->update($request->all()) : redirect()->route('admins.index');
+        $this->adminsService->update($request,$id);
 
-        return redirect()->route('admins.index')->with('success', '更新资料成功.');
+        flash('更新资料成功')->success()->important();
+
+        return redirect()->route('admins.index');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
         $admin = $this->adminsService->ById($id);
+
+        if(empty($admin))
+        {
+            flash('删除失败')->error()->important();
+
+            return redirect()->route('admins.index');
+        }
+
+        $admin->roles()->detach();
+
         $admin->delete();
-        return redirect()->route('admins.index')->with('success', '删除成功.');
+
+
+        flash('删除成功')->success()->important();
+
+        return redirect()->route('admins.index');
+    }
+
+    /**
+     * @param $status
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function status($status,$id)
+    {
+        $admin = $this->adminsService->ById($id);
+
+        if(empty($admin))
+        {
+            flash('操作失败')->error()->important();
+
+            return redirect()->route('admins.index');
+        }
+
+        $admin->update(['status'=>$status]);
+
+        flash('更新状态成功')->success()->important();
+
+        return redirect()->route('admins.index');
     }
 }

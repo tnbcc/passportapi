@@ -35,6 +35,7 @@
     </script>
 </head>
 <body class="gray-bg">
+@include('flash::message')
 @yield('content')
 <script src="{{loadEdition('/admin/js/icheck.js')}}"></script>
 <script src="{{loadEdition('/admin/js/validate/validate.js')}}"></script>
@@ -54,6 +55,8 @@
             $('input#ck_id').iCheck('uncheck');
         });
     });
+
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 </script>
 @yield('footer-js')
 </body>

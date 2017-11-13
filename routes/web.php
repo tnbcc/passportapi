@@ -10,5 +10,9 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin'], function (){
 
     Route::get('index/main', 'IndexsController@main')->name('index.main'); //首页数据分析
 
+    Route::get('admins/status/{statis}/{admin}','AdminsController@status')->name('admins.status');
+
     Route::resource('admins','AdminsController',['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]); //管理员
+
+    Route::resource('roles','RolesController',['only'=>['index','create','store','update','edit','destroy'] ]);  //角色
 });

@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{loadEdition('/admin/css/welcome.css')}}"/>
 <link rel="stylesheet" href="{{loadEdition('/admin/css/font-awesome.min.css')}}"/>
 @endsection
-<div class="wrapper wrapper-content animated fadeIn">
+<div class="wrapper wrapper-content animated fadeInRight">
   <div class="page">
     <div class="row card-box">
       <div class="col-lg-3 col-sm-3">
