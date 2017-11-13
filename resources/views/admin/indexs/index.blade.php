@@ -46,7 +46,7 @@
           <ul class="nav nav-second-level collapse">
             <li> <a class="J_menuItem" href="{{ route('admins.index') }}" data-index="14">管理员</a> </li>
             <li> <a class="J_menuItem" href="{{ route('roles.index') }}" data-index="14">角色管理</a> </li>
-            {{--<li> <a class="J_menuItem" href="{{ route('privilegs') }}" data-index="14">权限管理</a> </li>--}}
+            <li> <a class="J_menuItem" href="{{ route('rules.index') }}" data-index="14">权限管理</a> </li>
           </ul>
         </li>
       </ul>
