@@ -10,9 +10,9 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin'], function (){
 
     Route::get('index/main', 'IndexsController@main')->name('index.main'); //首页数据分析
 
-    Route::get('login','AdminsController@showLoginForm')->name('login');
+    Route::get('login','AdminsController@showLoginForm')->name('login');  //后台登陆页面
 
-    Route::post('login','AdminsController@login')->name('login');
+    Route::post('login-handle','AdminsController@loginHandle')->name('login-handle'); //后台登陆逻辑
 
     Route::get('admins/status/{statis}/{admin}','AdminsController@status')->name('admins.status');
 

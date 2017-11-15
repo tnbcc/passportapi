@@ -47,4 +47,14 @@ class AdminsRepository
     {
         return Admin::with('roles')->latest('updated_at')->paginate('10');
     }
+
+    /**
+     * 根据name查询管理员资料
+     * @param $name
+     * @return mixed
+     */
+    public function ByName($name)
+    {
+        return Admin::where('name',$name)->first();
+    }
 }

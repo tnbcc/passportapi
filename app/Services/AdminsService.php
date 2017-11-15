@@ -120,4 +120,14 @@ class AdminsService
     {
         return $this->adminsRepository->getAdminsWithRoles();
     }
+
+
+    public function login(array $params)
+    {
+        $admin = $this->adminsRepository->ByName($params['name'])->toArray();
+
+        session(['admin_auth'=>$admin]); //登录管理员
+
+        dd(AdminAuth::checked());
+    }
 }

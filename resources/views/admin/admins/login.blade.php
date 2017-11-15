@@ -31,18 +31,22 @@
                         <li><i class="fa fa-circle text-navy"></i> 优势一：采用Laravel 5.5 框架开发</li>
                         <li><i class="fa fa-circle text-navy"></i> 优势二：采用最流行的前端技术</li>
                         <li><i class="fa fa-circle text-navy"></i> 优势三：极佳的用户操作体验和安全策略</li>
-                        <li><i class="fa fa-circle text-navy"></i> 优势四：MVC分层模式，应用模块化，云端部暑</li>
-                        <li><i class="fa fa-circle text-navy"></i> 优势五：最大亮点是对接公众平台，对接QQ空间等</li>
+                        <li><i class="fa fa-circle text-navy"></i> 优势四：MVC分层模式，应用模块化</li>
+                        <li><i class="fa fa-circle text-navy"></i> 优势五：最大亮点是对接公众平台</li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-7 animated fadeInRight">
-                <form method="post" action="{{route('login')}}">
+                <form method="post" action="{{route('login-handle')}}">
                     {{csrf_field()}}
                     <p class="login-title">登录</p>
                     <p class="m-t-md" style="color:#666">登录到{{ config('app.name', 'Laravel') }}系统后台管理</p>
                     <input type="text" class="form-control uname" name="name" value="{{old('name')}}" required placeholder="用户名" />
                     <input type="password" class="form-control pword m-b" name="password" required placeholder="密码" />
+                    @if ($errors->has('password'))
+                        <span class="help-block m-b-none">
+                            <i class="fa fa-info-circle"></i>{{$errors->first('password')}}</span>
+                    @endif
                     <div style="width: 300px;">
                         {!! Geetest::render() !!}
                     </div>

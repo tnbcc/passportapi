@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\AdminLoginRequest;
 use App\Repositories\RolesRepository;
 use App\Services\AdminsService;
 use Illuminate\Http\Request;
@@ -100,6 +101,7 @@ class AdminsController extends BaseController
             return redirect()->route('admins.index');
         }
 
+
         $admin->roles()->detach();
 
         $admin->delete();
@@ -133,14 +135,16 @@ class AdminsController extends BaseController
         return redirect()->route('admins.index');
     }
 
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
         return view('admin.admins.login');
     }
 
-
-    public function login(Request $request)
+    /**
+     * @param AdminLoginRequest $request
+     */
+    public function loginHandle(AdminLoginRequest $request)
     {
-        dd($request->all());
+       return $this->adminsService->login($request->all());
     }
 }
