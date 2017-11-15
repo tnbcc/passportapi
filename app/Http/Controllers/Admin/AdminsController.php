@@ -155,7 +155,7 @@ class AdminsController extends BaseController
 
         flash('登录成功')->success()->important();
 
-        return redirect()->route('admins.index');
+        return redirect()->route('index.index');
     }
 
     /**

@@ -14,7 +14,7 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin'], function (){
     /**需要登录认证模块**/
     Route::group(['middleware' => 'auth:admin'],function (){
 
-        Route::get('admin/logout','AdminsController@logout')->name('admin.logout'); //退出登录
+        Route::get('logout','AdminsController@logout')->name('admin.logout'); //退出登录
 
         Route::resource('index', 'IndexsController', ['only' => ['index']]);  //首页
 
