@@ -15,6 +15,7 @@
  */
 namespace App\Services;
 
+use Auth;
 use App\Handlers\ImageUploadHandler;
 use App\Repositories\AdminsRepository;
 use Illuminate\Support\Facades\Hash;
@@ -122,12 +123,25 @@ class AdminsService
     }
 
 
+    /**
+     * 登录管理员
+     * @param array $params
+     * @return mixed
+     */
     public function login(array $params)
     {
-        $admin = $this->adminsRepository->ByName($params['name'])->toArray();
+       return Auth::guard('admin')->attempt([
+                   'name'=>$params['name'],
+                   'password'=>$params['password']
+              ]);
+    }
 
-        session(['admin_auth'=>$admin]); //登录管理员
-
-        dd(AdminAuth::checked());
+    /**
+     * 退出登录
+     * @return mixed
+     */
+    public function logout()
+    {
+        return Auth::guard('admin')->logout();
     }
 }

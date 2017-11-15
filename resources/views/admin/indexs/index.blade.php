@@ -35,7 +35,7 @@
               <!-- <li><a class="J_menuItem" href="form_avatar.html">修改头像</a></li>
               <li><a class="J_menuItem" href="form_avatar.html">修改密码</a></li>
               <li class="divider"></li> -->
-              <li><a href="{:U('login/loginout')}">安全退出</a></li>
+              <li><a href="{{route('admin.logout')}}">安全退出</a></li>
             </ul>
           </div>
           <div class="logo-element">YS+</div>
@@ -90,7 +90,7 @@
           </li>
         </ul>
       </div>
-      <a href="{:U('/admin/login/loginout')}" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+      <a href="{{route('admin.logout')}}" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
     </div>
     <div class="row J_mainContent" id="content-main">
       <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="{{route('index.main')}}" frameborder="0" data-id="index_v1.html" seamless></iframe>

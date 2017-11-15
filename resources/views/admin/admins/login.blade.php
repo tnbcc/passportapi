@@ -23,6 +23,7 @@
             <div class="col-sm-5 animated fadeInLeft">
                 <div class="signin-info">
                     <div class="logopanel m-b">
+                        @include('flash::message')
                         <h1>[ {{ config('app.name', 'Laravel') }} V1.0 ]</h1>
                     </div>
                     <div class="m-b"></div>
@@ -43,15 +44,22 @@
                     <p class="m-t-md" style="color:#666">登录到{{ config('app.name', 'Laravel') }}系统后台管理</p>
                     <input type="text" class="form-control uname" name="name" value="{{old('name')}}" required placeholder="用户名" />
                     <input type="password" class="form-control pword m-b" name="password" required placeholder="密码" />
-                    @if ($errors->has('password'))
-                        <span class="help-block m-b-none">
-                            <i class="fa fa-info-circle"></i>{{$errors->first('password')}}</span>
-                    @endif
                     <div style="width: 300px;">
                         {!! Geetest::render() !!}
                     </div>
                     <p></p>
                     <button class="btn btn-success btn-block">登录</button>
+                    <p></p>
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <h4>有错误发生：</h4>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li> {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </form>
             </div>
         </div>

@@ -141,10 +141,31 @@ class AdminsController extends BaseController
     }
 
     /**
+     * 管理员登陆
      * @param AdminLoginRequest $request
+     * @return $this|\Illuminate\Http\RedirectResponse
      */
     public function loginHandle(AdminLoginRequest $request)
     {
-       return $this->adminsService->login($request->all());
+       $result = $this->adminsService->login($request->all());
+
+        if(!$result) {
+            return redirect()->route('login')->withErrors('登录失败');
+        }
+
+        flash('登录成功')->success()->important();
+
+        return redirect()->route('admins.index');
+    }
+
+    /**
+     * 退出登录
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
+    {
+        $this->adminsService->logout();
+
+        return redirect()->route('login');
     }
 }
