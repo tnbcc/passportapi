@@ -19,3 +19,21 @@ function loadEdition($source)
 
     return $source . '?v=' . $version;
 }
+
+/**
+ * 返回错误信息页面提示
+ * @param null $message
+ * @param null $url
+ * @param null $view
+ * @return \Illuminate\Http\Response
+ */
+function viewError($message = null, $url = null, $view = null, $wait = 3)
+{
+    $view = $view ? $view : 'admin.errors.error';
+
+    return response()->view($view,[
+        'url'=> $url ? $url : '/',
+        'message'=>$message ? $message : '发生错误,请重试!',
+        'wait' => $wait,
+    ]);
+}

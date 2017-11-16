@@ -23,4 +23,5 @@ class Role extends Model
     {
         return $this->belongsToMany(Rule::class,'role_auth')->withTimestamps();
     }
+
 }

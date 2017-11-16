@@ -41,7 +41,7 @@ class AdminLoginRequest extends FormRequest
         return [
             'name'              => 'required',
             'password'          => ['required', new AdminLoginRule($this->adminsRepository, \Request::get('name'))],
-            'geetest_challenge' => 'geetest',
+            'geetest_challenge' => 'geetest'
         ];
     }
 
