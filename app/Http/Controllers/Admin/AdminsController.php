@@ -153,9 +153,7 @@ class AdminsController extends BaseController
             return redirect()->route('login')->withErrors('登录失败');
         }
 
-        flash('登录成功')->success()->important();
-
-        return redirect()->route('index.index');
+        return viewError('登录成功!','index.index','success');
     }
 
     /**

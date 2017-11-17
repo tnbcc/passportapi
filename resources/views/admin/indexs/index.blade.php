@@ -24,11 +24,15 @@
       <ul class="nav" id="side-menu">
         <li class="nav-header text-center">
           <div class="dropdown profile-element">
-            <span><img alt="image" class="img-circle" src="/admin/images/profile_small.png" width="64"/></span>
+            <span><img alt="image" class="img-circle" src="{{Auth::guard('admin')->user()->avatr}}" width="64"/></span>
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">{$adminuser}</strong></span>
-                                <span class="text-muted text-xs block">{$authgroup}<b class="caret"></b></span>
+                               <span class="block m-t-xs"><strong class="font-bold">{{Auth::guard('admin')->user()->name}}</strong></span>
+                                <span class="text-muted text-xs block">
+                                  @foreach(Auth::guard('admin')->user()->roles as $role)
+                                    {{$role->name}}
+                                  @endforeach
+                                  <b class="caret"></b></span>
                                 </span>
             </a>
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -118,6 +122,8 @@
             skin: 'layer-ext-espresso'
         });
     });
+
+    $(function(){$("#side-menu").metisMenu();})
 </script>
 </body>
 </html>

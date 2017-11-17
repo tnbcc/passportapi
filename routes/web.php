@@ -11,10 +11,10 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin'], function (){
 
     Route::post('login-handle','AdminsController@loginHandle')->name('login-handle'); //后台登陆逻辑
 
+    Route::get('logout','AdminsController@logout')->name('admin.logout'); //退出登录
+
     /**需要登录认证模块**/
     Route::middleware(['auth:admin','rbac'])->group(function (){
-
-        Route::get('logout','AdminsController@logout')->name('admin.logout'); //退出登录
 
         Route::resource('index', 'IndexsController', ['only' => ['index']]);  //首页
 

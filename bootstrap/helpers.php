@@ -25,14 +25,16 @@ function loadEdition($source)
  * @param null $message
  * @param null $url
  * @param null $view
+ * @param string $type
+ * @param int $wait
  * @return \Illuminate\Http\Response
  */
-function viewError($message = null, $url = null, $view = null, $wait = 3)
+function viewError($message = null, $url = null, $type = 'error' ,$view = null, $wait = 3)
 {
-    $view = $view ? $view : 'admin.errors.error';
+    $view = $view ? $view : 'admin.commons.'.$type;
 
     return response()->view($view,[
-        'url'=> $url ? $url : '/',
+        'url'=> $url ? route($url) : '/',
         'message'=>$message ? $message : '发生错误,请重试!',
         'wait' => $wait,
     ]);

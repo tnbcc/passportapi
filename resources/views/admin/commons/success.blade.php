@@ -1,4 +1,4 @@
-@extends('admin.errors.layout')
+@extends('admin.commons.prompt_layout')
 
 @section('title', '成功提示')
 
@@ -10,5 +10,5 @@
         <div class="sa-fix"></div>
     </div>
     <h2>{{ $message }}</h2>
-    <p>页面将会自动跳转，等待时间：<b id="wait">{{$wait}}</b><a id="href" style="display:none" href="{{route($url)}}">点击跳转</a></p>
+    <p>页面将会自动跳转，等待时间：<b id="wait">{{$wait}}</b><a id="href" style="display:none" href="{{$url}}">点击跳转</a></p>
 @stop
