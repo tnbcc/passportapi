@@ -9,8 +9,8 @@
     <link href="{{loadEdition('/admin/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{loadEdition('/admin/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{loadEdition('/admin/css/animate.min.css')}}" rel="stylesheet">
-    <link href="{{loadEdition('/admin/css/style.css')}}" rel="stylesheet">
-    <link href="{{loadEdition('/admin/css/sweetalert.css')}}" rel="stylesheet">
+    <link href="{{loadEdition('/admin/css/style.min.css')}}" rel="stylesheet">
+    <link href="{{loadEdition('/admin/css/plugins/sweetalert/sweetalert.css')}}" rel="stylesheet">
 </head>
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeIn">

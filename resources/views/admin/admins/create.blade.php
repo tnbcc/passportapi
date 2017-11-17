@@ -1,6 +1,5 @@
-@extends('Admin.layouts.layout')
+@extends('admin.layouts.layout')
 @section('content')
-<div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-sm-12">
             <div class="ibox-title">
@@ -65,5 +64,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
