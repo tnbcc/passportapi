@@ -42,6 +42,16 @@ class RulesRepository
     }
 
     /**
+     * 根据路由名称获取路由的详细信息
+     * @param $route
+     * @return mixed
+     */
+    public function ByRoute($route)
+    {
+        return Rule::where('route',$route)->first();
+    }
+
+    /**
      * 获取全部权限
      * @return mixed
      */

@@ -4,9 +4,21 @@ namespace App\Http\Middleware;
 
 use Auth;
 use Closure;
+use App\Services\ActionLogsService;
 
 class RbacAuth
 {
+    protected $actionLogsService;
+
+    /**
+     * RbacAuth constructor.
+     * @param $actionLogsService
+     */
+    public function __construct(ActionLogsService $actionLogsService)
+    {
+        $this->actionLogsService = $actionLogsService;
+    }
+
 
     /**
      * Handle an incoming request.
@@ -23,23 +35,15 @@ class RbacAuth
             return redirect()->route('login');
         }
 
-        /**获取当前访问的路由地址*/
-        $path = $request->path();
-
-        /**获取当前登录用户的信息*/
-
-        $user = Auth::guard('admin')->user();
-
-        $permissions = [];
-
-        foreach($user->roles as $role)
+        /**记录用户操作日志**/
+        if(in_array($request->method(),['POST','PUT','PATCH','DELETE']))
         {
-            $permissions = array_unique(array_merge($permissions, $role->rules()->pluck('route')->toArray()));
+            $this->actionLogsService->create($request);
         }
 
-        if(!in_array($path, $permissions))
+        if(!Auth::guard('admin')->user()->hasRule($request->path()))
         {
-            return viewError('你无权访问!','index.index');
+            return viewError('你无权访问','index.index');
         }
 
         return $next($request);

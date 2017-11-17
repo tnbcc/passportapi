@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Germey\Geetest\GeetestServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*

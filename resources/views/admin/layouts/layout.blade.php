@@ -18,6 +18,7 @@
 </head>
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
+    @include('flash::message')
     @yield('content')
 </div>
 <script src="{{loadEdition('/js/jquery.min.js')}}"></script>
