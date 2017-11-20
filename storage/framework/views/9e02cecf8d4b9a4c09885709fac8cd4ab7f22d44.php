@@ -55,7 +55,7 @@
                         <?php if(isset($rule['children'])): ?>
                             <ul class="nav nav-second-level collapse">
                                 <?php $__currentLoopData = $rule['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a class="J_menuItem" href="<?php echo e(route($item['route'])); ?>" data-index="<?php echo e($item['id']); ?>"><?php echo e($item['name']); ?></a></li>
+                                    <li><a class="J_menuItem" href="<?php echo e(route($item['route'])); ?>" data-index="index_v1.html"><?php echo e($item['name']); ?></a></li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         <?php endif; ?>

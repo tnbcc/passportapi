@@ -54,7 +54,7 @@
                         @if(isset($rule['children']))
                             <ul class="nav nav-second-level collapse">
                                 @foreach($rule['children'] as $k=>$item)
-                                    <li><a class="J_menuItem" href="{{ route($item['route']) }}" data-index="{{$item['id']}}">{{$item['name']}}</a></li>
+                                    <li><a class="J_menuItem" href="{{ route($item['route']) }}" data-index="index_v1.html">{{$item['name']}}</a></li>
                                 @endforeach
                             </ul>
                         @endif
