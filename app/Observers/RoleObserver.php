@@ -10,22 +10,21 @@
  * ============================================================================
  * Created by PhpStorm.
  * Author: kenuo
- * Date: 2017/11/17
- * Time: 下午4:42
+ * Date: 2017/11/20
+ * Time: 下午2:49
  */
 
-namespace App\Services;
+namespace App\Observers;
 
+use Cache;
 
-class PublicsService
+class RoleObserver
 {
     /**
-     * 获取id详细地址信息
-     * @param null $id
-     * @return mixed
+     * 删除角色事件
      */
-    public function getLocation($id = null)
+    public function deleting()
     {
-        return \Ip::find($id);
+        return Cache::tags('rbac')->flush();
     }
 }

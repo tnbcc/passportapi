@@ -201,5 +201,33 @@ final class Tree
         }
         return $n_arr;
     }
+
+    /**
+     * 获取树形结构
+     * @param array $data
+     * @param int $parent_id
+     * @param int $level
+     * @return array
+     */
+    static function array_tree(array $data,$parent_id = 0,$level = 0)
+    {
+        static $_tmp = array();
+
+        foreach ($data as $key => $item)
+        {
+            if($item['parent_id'] == $parent_id)
+            {
+                foreach ($data as $k => $value) {
+                    if($value['parent_id'] == $item['id']){  //如果子级权限的parend_id等于顶级权限的id就说明这个权限是顶级权限的子级权限
+                        $item['children'][] = $value;	//然后把子权限放在一个新的数组里
+                    }
+                }
+
+                $_tmp[] = $item;
+            }
+        }
+
+        return $_tmp;
+    }
 }
 

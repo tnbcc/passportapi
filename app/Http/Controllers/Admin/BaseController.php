@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
 use Route;
 use App\Http\Controllers\Controller;
 

@@ -15,4 +15,15 @@ class Rule extends Model
     {
         return $this->belongsToMany(Role::class,'role_auth')->withTimestamps();
     }
+
+
+    /**
+     * 只获取显示的数据
+     * @param $query
+     * @return mixed
+     */
+    public function scopePublic($query)
+    {
+        return $query->where('is_hidden',0);
+    }
 }

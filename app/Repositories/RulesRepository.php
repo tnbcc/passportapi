@@ -52,11 +52,20 @@ class RulesRepository
     }
 
     /**
+     * 获取全部权限只限显示的数据
+     * @return mixed
+     */
+    public function getRulesAndPublic()
+    {
+        return Rule::orderBy('sort','asc')->public()->get();
+    }
+
+    /**
      * 获取全部权限
      * @return mixed
      */
     public function getRules()
     {
-        return Rule::get();
+        return Rule::orderBy('sort','asc')->get();
     }
 }

@@ -16,9 +16,10 @@
 
 namespace App\Services;
 
-use App\Repositories\RulesRepository;
 use Auth;
+use Route;
 use Zhuzhichao\IpLocationZh\Ip;
+use App\Repositories\RulesRepository;
 use App\Repositories\ActionLogsRepository;
 
 class ActionLogsService
@@ -45,35 +46,22 @@ class ActionLogsService
      */
     public function create($request)
     {
-        $path = explode('/',$request->path());
+        $path = Route::currentRouteName();
 
-        $path_count = count($path);
-
-        $rule = $this->rulesRepository->ByRoute($request->path());
+        $rule = $this->rulesRepository->ByRoute($path);
 
         if(is_null($rule)) return false;
 
-        switch ($path_count)
-        {
-            case 2: //就是一级显示权限
-                $action = '访问了'.$rule->name . '模块';
-                break;
-
-            case 3: //就是具体操作方法
-                $action = '操作了'.$rule->name . '模块';
-                break;
-        }
+        //获取当前登录管理员信息
+        $admin = Auth::guard('admin')->user();
 
         $address = Ip::find($request->getClientIp());
 
         $data = [
-            'id'=> $request->getClientIp(),
+            'ip'=> $request->getClientIp(),
             'address'=> $address[0].$address[1].$address[2],
-            'action'=> $action,
+            'action'=> $action = $admin->name.' 操作了 '.$rule->name . ' 模块',
         ];
-
-        //获取当前登录管理员信息
-        $admin = Auth::guard('admin')->user();
 
         $datas['admin_id'] = $admin->id;
         $datas['data'] = json_encode($data);

@@ -14,8 +14,9 @@
                                            class="font-bold">{{Auth::guard('admin')->user()->name}}</strong></span>
                                   <span class="text-muted text-xs block">
                                     @foreach(Auth::guard('admin')->user()->roles as $role)
-                                          {{$role->name}}<b class="caret"></b>
-                                      @endforeach
+                                          {{$role->name}}
+                                    @endforeach
+                                    <b class="caret"></b>
                                   </span>
                                 </span>
                     </a>
@@ -29,17 +30,38 @@
                 <div class="logo-element">YS+</div>
             </li>
 
-            <li><a title="网站首页" href="/" target="_blank"> <i class="fa fa-home"></i> <span
-                            class="nav-label">网站首页</span></a></li>
-            <li>
-                <a title="权限管理"> <i class="fa fa-user"></i> <span class="nav-label">权限管理</span> <span
-                            class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level collapse">
-                    <li><a class="J_menuItem" href="{{ route('admins.index') }}" data-index="14">管理员</a></li>
-                    <li><a class="J_menuItem" href="{{ route('roles.index') }}" data-index="14">角色管理</a></li>
-                    <li><a class="J_menuItem" href="{{ route('rules.index') }}" data-index="14">权限管理</a></li>
-                </ul>
-            </li>
+            @foreach(Auth::guard('admin')->user()->getMenus() as $key => $rule)
+                @if($rule['route'] == 'index.index')
+                    <li>
+                        <a title="{{$rule['name']}}" href="{{route($rule['route'])}}" target="_blank">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">{{$rule['name']}}</span>
+                        </a>
+                        @if(isset($rule['children']))
+                            <ul class="nav nav-second-level collapse">
+                                @foreach($rule['children'] as $k=>$item)
+                                    <li><a class="J_menuItem" href="{{ route($item['route']) }}" data-index="{{$item['id']}}">{{$item['name']}}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    <li>
+                @else
+                    <li>
+                        <a title="{{$rule['name']}}"> <i class="fa fa-user"></i>
+                            <span class="nav-label">{{$rule['name']}}</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        @if(isset($rule['children']))
+                            <ul class="nav nav-second-level collapse">
+                                @foreach($rule['children'] as $k=>$item)
+                                    <li><a class="J_menuItem" href="{{ route($item['route']) }}" data-index="{{$item['id']}}">{{$item['name']}}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endif
+                <li>
+            @endforeach
         </ul>
     </div>
 </nav>

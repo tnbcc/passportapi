@@ -41,7 +41,7 @@ class RbacAuth
             $this->actionLogsService->create($request);
         }
 
-        if(!Auth::guard('admin')->user()->hasRule($request->path()))
+        if(!Auth::guard('admin')->user()->hasRule(\Route::currentRouteName()))
         {
             return viewError('你无权访问','index.index');
         }

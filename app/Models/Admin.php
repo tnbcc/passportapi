@@ -38,7 +38,6 @@ class Admin extends Authenticatable
             return true;
         }
 
-
         $rules = $this->getRules();
 
         return in_array($route, $rules);

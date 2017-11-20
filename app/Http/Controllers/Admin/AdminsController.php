@@ -149,8 +149,9 @@ class AdminsController extends BaseController
     {
        $result = $this->adminsService->login($request->all());
 
-        if(!$result) {
-            return redirect()->route('login')->withErrors('登录失败');
+        if(!$result)
+        {
+            return viewError('登录失败','login');
         }
 
         return viewError('登录成功!','index.index','success');

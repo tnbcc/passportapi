@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">排序：</label>
                     <div class="col-sm-1">
-                        <input type="text" name="sort" {{$rule->sort}} value="255" required class="form-control">
+                        <input type="text" name="sort" value="{{$rule->sort}}" required class="form-control">
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>

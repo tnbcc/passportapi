@@ -13,6 +13,7 @@
  * Date: 2017/11/13
  * Time: 上午9:50
  */
+
 namespace App\Services;
 
 use Auth;
@@ -31,7 +32,7 @@ class AdminsService
      * @param AdminsRepository $adminsRepository
      * @param ImageUploadHandler $imageUploadHandler
      */
-    public function __construct(AdminsRepository $adminsRepository,ImageUploadHandler $imageUploadHandler)
+    public function __construct(AdminsRepository $adminsRepository, ImageUploadHandler $imageUploadHandler)
     {
         $this->adminsRepository = $adminsRepository;
 
@@ -73,25 +74,23 @@ class AdminsService
      * @param $id
      * @return mixed
      */
-    public function update($request,$id)
+    public function update($request, $id)
     {
         $datas = $request->all();
 
         $admin = $this->adminsRepository->ById($id);
 
         //上传头像
-        if ($request->avatr)
-        {
+        if ($request->avatr) {
             $result = $this->uploader->save($request->avatr, 'avatrs');
             if ($result) {
                 $datas['avatr'] = $result['path'];
             }
         }
 
-        if(isset($datas['password']))
-        {
+        if (isset($datas['password'])) {
             $datas['password'] = Hash::make($request->password);
-        }else{
+        } else {
             unset($datas['password']);
         }
 
@@ -130,10 +129,11 @@ class AdminsService
      */
     public function login(array $params)
     {
-       return Auth::guard('admin')->attempt([
-                   'name'=>$params['name'],
-                   'password'=>$params['password']
-              ]);
+        return Auth::guard('admin')->attempt([
+            'name'     => $params['name'],
+            'password' => $params['password'],
+            'status'   => 1,
+        ]);
     }
 
     /**

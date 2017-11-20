@@ -24,4 +24,13 @@ class Role extends Model
         return $this->belongsToMany(Rule::class,'role_auth')->withTimestamps();
     }
 
+    /**
+     * 获取显示的权限
+     * @return mixed
+     */
+    public function rulesPublic()
+    {
+        return $this->rules()->public()->orderBy('sort','asc')->get();
+    }
+
 }
