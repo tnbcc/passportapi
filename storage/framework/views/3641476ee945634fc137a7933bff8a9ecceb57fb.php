@@ -40,7 +40,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </td>
                             <td class="text-center"><?php echo e($item->last_login_ip); ?></td>
-                            <td class="text-center"><?php echo e($item->updated_at); ?></td>
+                            <td class="text-center"><?php echo e($item->created_at); ?></td>
                             <td class="text-center"><?php echo e($item->created_at); ?></td>
                             <td class="text-center"><?php echo e($item->create_ip); ?></td>
                             <td class="text-center"><?php echo e($item->login_count); ?></td>

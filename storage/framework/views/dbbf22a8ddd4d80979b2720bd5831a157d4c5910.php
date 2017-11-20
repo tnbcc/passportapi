@@ -1,5 +1,4 @@
-@extends('admin.layouts.layout')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-sm-12">
         <div class="ibox-title">
@@ -7,16 +6,18 @@
         </div>
         <div class="ibox-content">
             <a class="menuid btn btn-primary btn-sm" href="javascript:history.go(-1)">返回</a>
-            <a href="{{route('admins.index')}}"><button class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus-circle"></i> 管理员管理</button></a>
+            <a href="<?php echo e(route('admins.index')); ?>"><button class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus-circle"></i> 管理员管理</button></a>
             <a class="btn btn-success btn-sm" onclick="reloadPage(window)"><i class="fa fa-refresh"></i> 刷新</a>
             <div class="hr-line-dashed m-t-sm m-b-sm"></div>
-            <form class="form-horizontal m-t-md" action="{{ route('admins.update',$admin->id) }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
-                {!! csrf_field() !!}
-                {{method_field('PATCH')}}
+            <form class="form-horizontal m-t-md" action="<?php echo e(route('admins.update',$admin->id)); ?>" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                <?php echo csrf_field(); ?>
+
+                <?php echo e(method_field('PATCH')); ?>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">用户名：</label>
                     <div class="input-group col-sm-2">
-                        <input type="text" class="form-control" name="name" value="{{$admin->name}}" required data-msg-required="请输入用户名">
+                        <input type="text" class="form-control" name="name" value="<?php echo e($admin->name); ?>" required data-msg-required="请输入用户名">
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -32,7 +33,7 @@
                     <div class="input-group col-sm-2">
                         <input type="file" class="form-control" name="avatr">
                         <span class="view picview ">
-                           <img id="thumbnail-avatar" class="thumbnail img-responsive" src="{{$admin->avatr}}" width="100" height="100">
+                           <img id="thumbnail-avatar" class="thumbnail img-responsive" src="<?php echo e($admin->avatr); ?>" width="100" height="100">
                         </span>
                     </div>
                 </div>
@@ -41,9 +42,9 @@
                     <label class="col-sm-2 control-label">所属角色：</label>
                     <div class="input-group col-sm-2">
                         <select class="form-control" name="role_id">
-                            @foreach($roles as $k=>$item)
-                            <option value="{{$item->id}}" @if(in_array($item->id,$admin->roles->pluck('id')->toArray())) selected="selected" @endif>{{$item->name}}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($item->id); ?>" <?php if(in_array($item->id,$admin->roles->pluck('id')->toArray())): ?> selected="selected" <?php endif; ?>><?php echo e($item->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
                 </div>
@@ -52,8 +53,8 @@
                     <label class="col-sm-2 control-label">状态：</label>
                     <div class="input-group col-sm-1">
                         <select class="form-control" name="status">
-                            <option value="1" @if($admin->status == 1) selected="selected" @endif>正常</option>
-                            <option value="2" @if($admin->status == 2) selected="selected" @endif>锁定</option>
+                            <option value="1" <?php if($admin->status == 1): ?> selected="selected" <?php endif; ?>>正常</option>
+                            <option value="2" <?php if($admin->status == 2): ?> selected="selected" <?php endif; ?>>锁定</option>
                         </select>
                     </div>
                 </div>
@@ -68,4 +69,5 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layouts.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

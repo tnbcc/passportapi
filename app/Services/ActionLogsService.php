@@ -52,20 +52,37 @@ class ActionLogsService
 
         if(is_null($rule)) return false;
 
+        //获取当前操作方法上级模块名称
+        if($rule->parent_id != 0)
+        {
+            $parent_rule = $this->rulesRepository->ById($rule->parent_id);
+        }
+
         //获取当前登录管理员信息
         $admin = Auth::guard('admin')->user();
 
         $address = Ip::find($request->getClientIp());
 
+        $action = "管理员: {$admin->name} 操作了 【{$parent_rule->name}】- {$rule->name} 模块";
+
         $data = [
             'ip'=> $request->getClientIp(),
             'address'=> $address[0].$address[1].$address[2],
-            'action'=> $action = $admin->name.' 操作了 '.$rule->name . ' 模块',
+            'action'=> $action,
         ];
 
         $datas['admin_id'] = $admin->id;
         $datas['data'] = json_encode($data);
 
         return $this->actionLogsRepository->create($datas);
+    }
+
+    /**
+     * 获取全部的操作日志
+     * @return mixed
+     */
+    public function getActionLogs()
+    {
+        return $this->actionLogsRepository->getWithAdminActionLogs();
     }
 }

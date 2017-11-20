@@ -29,4 +29,13 @@ class ActionLogsRepository
     {
         return ActionLog::create($data);
     }
+
+    /**
+     * 获取全部的操作日志
+     * @return mixed
+     */
+    public function getWithAdminActionLogs()
+    {
+        return ActionLog::with('admin')->latest('created_at')->paginate(20);
+    }
 }
