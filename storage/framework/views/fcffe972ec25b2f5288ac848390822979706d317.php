@@ -144,24 +144,21 @@
         <h5>系统更新日志</h5>
       </div>
       <div class="ibox-content timeline">
-        
+
         <div class="timeline-item">
           <div class="row">
             <div class="col-xs-3 date">
               <i class="fa fa-file-text"></i>
-              <small class="text-navy">2017年3月30日更新</small>
+              <small class="text-navy">2017年11月21日更新</small>
             </div>
             <div class="col-xs-7 content">
-              <p class="m-b-xs"><strong>源神CMS笑话系统V4.4</strong>
+              <p class="m-b-xs"><strong>YICMS V1.0</strong>
               </p>
               <p>
-                1、修复后台开启水印时缺少字体 √<br>
-                1、修复视频上传到七牛云后没有后缀导致手机端无法播放 √<br>
-                2、填加了火车头采集后台生成GIF缩略图 √<br>
-                3、填加了定时任务审核功能 √<br>
-                4、修复了后台一些样式问题 √<br>
-                5、修复了安装软件的流程！√<br>
-                6、PC+WAP端发布页一处BUG修复√<br>
+                1、使用Auth进行后台管理员登陆认证√<br>
+                1、RBAC权限操作日志完成以及RBAC缓存优化机制 √<br>
+                2、增加后台管理员操作日志记录 √<br>
+                3、后台权限日志增加登录操作记录以及细节BUG修复 √<br>
               </p>
             </div>
           </div>

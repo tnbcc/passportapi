@@ -27,7 +27,20 @@
                             <?php $__currentLoopData = $rules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($item['id']); ?>" <?php if($rule->parent_id == $item['id']): ?> selected="selected"<?php endif; ?> ><?php echo e($item['_name']); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($errors->has('parent_id')): ?>
+                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i><?php echo e($errors->first('parent_id')); ?></span>
+                            <?php endif; ?>
                         </select>
+                    </div>
+                </div>
+                <div class="hr-line-dashed m-t-sm m-b-sm"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">权限名称：</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="name" value="<?php echo e($rule->name); ?>" class="form-control" required data-msg-required="请输入权限名称">
+                        <?php if($errors->has('name')): ?>
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i><?php echo e($errors->first('name')); ?></span>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -35,20 +48,20 @@
                     <label class="col-sm-2 control-label">菜单图标：</label>
                     <div class="col-sm-3">
                         <input type="text" name="fonts" id="fonts" onclick="showicon()" value="<?php echo e($rule->fonts); ?>"  placeholder="菜单图标" class="form-control">
-                        <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 采用Font Awesome字体图标</span> </div>
-                </div>
-                <div class="hr-line-dashed m-t-sm m-b-sm"></div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">权限名称：</label>
-                    <div class="col-sm-3">
-                        <input type="text" name="name" value="<?php echo e($rule->name); ?>" class="form-control" required data-msg-required="请输入权限名称">
-                    </div>
+                        <?php if($errors->has('fonts')): ?>
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i><?php echo e($errors->first('fonts')); ?></span>
+                        <?php else: ?>
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 采用Font Awesome字体图标</span> </div>
+                        <?php endif; ?>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">权限路径：</label>
                     <div class="col-sm-3">
                         <input type="text" name="route" value="<?php echo e($rule->route); ?>" class="form-control">
+                        <?php if($errors->has('route')): ?>
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i><?php echo e($errors->first('route')); ?></span>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -56,6 +69,9 @@
                     <label class="col-sm-2 control-label">排序：</label>
                     <div class="col-sm-1">
                         <input type="text" name="sort" value="<?php echo e($rule->sort); ?>" required class="form-control">
+                        <?php if($errors->has('sort')): ?>
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i><?php echo e($errors->first('sort')); ?></span>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -66,6 +82,9 @@
                             <option value="0" <?php if($rule->is_hidden == 0): ?>selected="selected" <?php endif; ?> >显示</option>
                             <option value="1" <?php if($rule->is_hidden == 1): ?>selected="selected" <?php endif; ?>>隐藏</option>
                         </select>
+                        <?php if($errors->has('is_hidden')): ?>
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i><?php echo e($errors->first('is_hidden')); ?></span>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -76,14 +95,15 @@
                             <option value="1" <?php if($rule->status == 1): ?>selected="selected" <?php endif; ?>>启用</option>
                             <option value="0" <?php if($rule->status == 0): ?>selected="selected" <?php endif; ?>>禁用</option>
                         </select>
+                        <?php if($errors->has('status')): ?>
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i><?php echo e($errors->first('status')); ?></span>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
                 <div class="form-group">
                     <div class="col-sm-12 col-sm-offset-2">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;保 存
-                        </button>
-                        　
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;保 存</button>
                         <button class="btn btn-white" type="reset"><i class="fa fa-repeat"></i> 重 置</button>
                     </div>
                 </div>
