@@ -36,11 +36,9 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">所属角色：</label>
                         <div class="input-group col-sm-2">
-                            <select class="form-control" name="role_id">
-                                <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($item->id); ?>" <?php if($item->id == old('role_id')): ?> selected="selected" <?php endif; ?>><?php echo e($item->name); ?></option>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </select>
+                            <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <label><input type="checkbox" name="role_id[]" value="<?php echo e($item->id); ?>" <?php if($item->id == old('role_id')): ?> checked="checked" <?php endif; ?>> <?php echo e($item->name); ?></label><br/>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                     <div class="hr-line-dashed m-t-sm m-b-sm"></div>

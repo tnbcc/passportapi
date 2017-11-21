@@ -8,7 +8,6 @@
         <div class="ibox-content">
             <a class="menuid btn btn-primary btn-sm" href="javascript:history.go(-1)">返回</a>
             <a href="{{route('admins.index')}}"><button class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus-circle"></i> 管理员管理</button></a>
-            <a class="btn btn-success btn-sm" onclick="reloadPage(window)"><i class="fa fa-refresh"></i> 刷新</a>
             <div class="hr-line-dashed m-t-sm m-b-sm"></div>
             <form class="form-horizontal m-t-md" action="{{ route('admins.update',$admin->id) }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
                 {!! csrf_field() !!}
@@ -23,7 +22,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">密码：</label>
                     <div class="input-group col-sm-2">
-                        <input type="password" class="form-control" name="password" ps>
+                        <input type="password" class="form-control" name="password">
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -40,11 +39,12 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">所属角色：</label>
                     <div class="input-group col-sm-2">
-                        <select class="form-control" name="role_id">
-                            @foreach($roles as $k=>$item)
-                            <option value="{{$item->id}}" @if(in_array($item->id,$admin->roles->pluck('id')->toArray())) selected="selected" @endif>{{$item->name}}</option>
-                            @endforeach
-                        </select>
+                        @php
+                            $ruleids = $admin->roles->pluck('id')->toArray();
+                        @endphp
+                        @foreach($roles as $k=>$item)
+                            <label><input type="checkbox" name="role_id[]" value="{{$item->id}}" @if(in_array($item->id,$ruleids)) checked="checked" @endif> {{$item->name}}</label><br/>
+                        @endforeach
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -60,7 +60,8 @@
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
                 <div class="form-group">
                     <div class="col-sm-12 col-sm-offset-2">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;保 存</button>　<button class="btn btn-white" type="reset"><i class="fa fa-repeat"></i> 重 置</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;保 存</button>
+                        <button class="btn btn-white" type="reset"><i class="fa fa-repeat"></i> 重 置</button>
                     </div>
                 </div>
                 <div class="clearfix"></div>

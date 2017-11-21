@@ -40,11 +40,39 @@ class ActionLogsService
     }
 
     /**
+     * 登录操作日志
+     * @param $request
+     * @return mixed
+     */
+    public function loginActionLogCreate($request,$status = false)
+    {
+        //获取当前登录管理员信息
+        $admin = Auth::guard('admin')->user();
+
+        $ip = $request->getClientIp();
+
+        $address = Ip::find($ip);
+
+        $action = $status ? "管理员: {$admin->name} 登录成功" : " 登录失败,登录的账号为：{$request->name}　密码为：{$request->password}";
+
+        $data = [
+            'ip'=> $ip,
+            'address'=> $address[0].$address[1].$address[2],
+            'action'=> $action,
+        ];
+
+        $datas['data'] = json_encode($data);
+        $datas['type'] = 2;
+        return $this->actionLogsRepository->create($datas);
+    }
+
+
+    /**
      * 后台操作日志
      * @param $request
      * @return mixed
      */
-    public function create($request)
+    public function mudelActionLogCreate($request)
     {
         $path = Route::currentRouteName();
 
@@ -73,7 +101,8 @@ class ActionLogsService
 
         $datas['admin_id'] = $admin->id;
         $datas['data'] = json_encode($data);
-
+        $datas['type'] = 1;
+        isset($admin->id) ? $datas['admin_id'] = $admin->id : null;
         return $this->actionLogsRepository->create($datas);
     }
 

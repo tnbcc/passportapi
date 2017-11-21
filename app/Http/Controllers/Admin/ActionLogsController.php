@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\ActionLog;
 use App\Services\ActionLogsService;
 
 class ActionLogsController extends BaseController
@@ -25,5 +26,14 @@ class ActionLogsController extends BaseController
         $actions = $this->actionLogsService->getActionLogs();
 
         return $this->view(null,compact('actions'));
+    }
+
+    public function destroy(ActionLog $actionLog)
+    {
+        $actionLog->delete();
+
+        flash('删除日志成功')->success()->important();
+
+        return redirect()->route('actions.index');
     }
 }

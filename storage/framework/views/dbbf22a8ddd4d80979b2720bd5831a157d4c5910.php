@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">密码：</label>
                     <div class="input-group col-sm-2">
-                        <input type="password" class="form-control" name="password" ps>
+                        <input type="password" class="form-control" name="password">
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -41,11 +41,12 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">所属角色：</label>
                     <div class="input-group col-sm-2">
-                        <select class="form-control" name="role_id">
-                            <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($item->id); ?>" <?php if(in_array($item->id,$admin->roles->pluck('id')->toArray())): ?> selected="selected" <?php endif; ?>><?php echo e($item->name); ?></option>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </select>
+                        <?php
+                            $ruleids = $admin->roles->pluck('id')->toArray();
+                        ?>
+                        <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k=>$item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <label><input type="checkbox" name="role_id[]" value="<?php echo e($item->id); ?>" <?php if(in_array($item->id,$ruleids)): ?> checked="checked" <?php endif; ?>> <?php echo e($item->name); ?></label><br/>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -61,7 +62,8 @@
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
                 <div class="form-group">
                     <div class="col-sm-12 col-sm-offset-2">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;保 存</button>　<button class="btn btn-white" type="reset"><i class="fa fa-repeat"></i> 重 置</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;保 存</button>
+                        <button class="btn btn-white" type="reset"><i class="fa fa-repeat"></i> 重 置</button>
                     </div>
                 </div>
                 <div class="clearfix"></div>

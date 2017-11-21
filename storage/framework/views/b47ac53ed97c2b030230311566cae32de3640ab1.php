@@ -36,7 +36,6 @@
                         <td class="text-center">
                             <div class="btn-group">
                                 <a href="<?php echo e(route('roles.access',$item->id)); ?>"><button class="btn btn-primary btn-xs" type="button"><i class="fa fa-paste"></i> 权限设置</button></a>
-                                <a href="{:U('AuthGroup/user',array('id'=>$v['id']))}"><button class="btn btn-primary btn-xs" type="button"><i class="fa fa-paste"></i> 成员管理</button></a>
                                 <a href="<?php echo e(route('roles.edit',$item->id)); ?>"><button class="btn btn-primary btn-xs" type="button"><i class="fa fa-paste"></i> 修改</button></a>
                                 <form class="form-common" action="<?php echo e(route('roles.destroy', $item->id)); ?>" method="post">
                                     <?php echo e(csrf_field()); ?>

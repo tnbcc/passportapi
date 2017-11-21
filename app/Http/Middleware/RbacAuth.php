@@ -38,7 +38,7 @@ class RbacAuth
         /**记录用户操作日志**/
         if(in_array($request->method(),['POST','PUT','PATCH','DELETE']))
         {
-            $this->actionLogsService->create($request);
+            $this->actionLogsService->mudelActionLogCreate($request);
         }
 
         if(!Auth::guard('admin')->user()->hasRule(\Route::currentRouteName()))

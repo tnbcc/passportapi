@@ -1,4 +1,7 @@
 <!--左侧导航开始-->
+@php
+    $admin = Auth::guard('admin')->user();
+@endphp
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="nav-close"><i class="fa fa-times-circle"></i>
     </div>
@@ -6,20 +9,22 @@
         <ul class="nav" id="side-menu">
             <li class="nav-header text-center">
                 <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="{{Auth::guard('admin')->user()->avatr}}"
-                                   width="64"/></span>
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span>
+                                    <img alt="image" class="img-circle" src="{{$admin->avatr}}" width="64"/>
+                                </span>
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong
-                                           class="font-bold">{{Auth::guard('admin')->user()->name}}</strong></span>
-                                  <span class="text-muted text-xs block">
-                                    @foreach(Auth::guard('admin')->user()->roles as $role)
-                                          {{$role->name}}
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">{{$admin->name}}</strong>
+                                </span>
+                                <span class="text-muted text-xs block">
+                                    @foreach($admin->roles as $role)
+                                      {{$role->name}}
                                     @endforeach
                                     <b class="caret"></b>
-                                  </span>
                                 </span>
-                    </a>
+                                </span>
+                                </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a class="J_menuItem" href="form_avatar.html">修改头像</a></li>
                         <li><a class="J_menuItem" href="form_avatar.html">修改密码</a></li>

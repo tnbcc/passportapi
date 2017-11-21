@@ -15,7 +15,7 @@ class CreateActionLogsTable extends Migration
     {
         Schema::create('action_logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('admin_id')->index()->comment('管理员id');
+            $table->integer('admin_id')->nullable()->index()->comment('管理员id');
             $table->json('data')->comment('操作内容');
             $table->timestamps();
         });

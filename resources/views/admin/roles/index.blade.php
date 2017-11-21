@@ -8,7 +8,6 @@
         <div class="ibox-content">
             <a class="menuid btn btn-primary btn-sm" href="javascript:history.go(-1)">返回</a> &nbsp;
             <a href="{{route('roles.create')}}" link-url="javascript:void(0)"><button class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus-circle"></i> 添加角色</button></a>
-            <a class="btn btn-success btn-sm" onclick="reloadPage(window)"><i class="fa fa-refresh"></i> 刷新</a>&nbsp;
             <table class="table table-striped table-bordered table-hover m-t-md">
                 <thead>
                 <tr>
@@ -37,7 +36,6 @@
                         <td class="text-center">
                             <div class="btn-group">
                                 <a href="{{route('roles.access',$item->id)}}"><button class="btn btn-primary btn-xs" type="button"><i class="fa fa-paste"></i> 权限设置</button></a>
-                                <a href="{:U('AuthGroup/user',array('id'=>$v['id']))}"><button class="btn btn-primary btn-xs" type="button"><i class="fa fa-paste"></i> 成员管理</button></a>
                                 <a href="{{route('roles.edit',$item->id)}}"><button class="btn btn-primary btn-xs" type="button"><i class="fa fa-paste"></i> 修改</button></a>
                                 <form class="form-common" action="{{ route('roles.destroy', $item->id) }}" method="post">
                                     {{ csrf_field() }}

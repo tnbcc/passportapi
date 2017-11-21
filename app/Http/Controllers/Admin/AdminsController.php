@@ -90,7 +90,7 @@ class AdminsController extends BaseController
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function delete($id)
     {
         $admin = $this->adminsService->ById($id);
 
@@ -147,7 +147,7 @@ class AdminsController extends BaseController
      */
     public function loginHandle(AdminLoginRequest $request)
     {
-       $result = $this->adminsService->login($request->all());
+       $result = $this->adminsService->login($request);
 
         if(!$result)
         {

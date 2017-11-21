@@ -40,8 +40,8 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </td>
                             <td class="text-center"><?php echo e($item->last_login_ip); ?></td>
-                            <td class="text-center"><?php echo e($item->created_at); ?></td>
-                            <td class="text-center"><?php echo e($item->created_at); ?></td>
+                            <td class="text-center"><?php echo e($item->created_at->diffForHumans()); ?></td>
+                            <td class="text-center"><?php echo e($item->created_at->diffForHumans()); ?></td>
                             <td class="text-center"><?php echo e($item->create_ip); ?></td>
                             <td class="text-center"><?php echo e($item->login_count); ?></td>
                             <td class="text-center">
@@ -61,13 +61,7 @@
                                     <?php else: ?>
                                             <a href="<?php echo e(route('admins.status',['status'=>2,'id'=>$item->id])); ?>"><button class="btn btn-warning btn-xs" type="button"><i class="fa fa-warning"></i> 禁用</button></a>
                                     <?php endif; ?>
-                                    <form class="form-common" action="<?php echo e(route('admins.destroy',$item->id)); ?>" method="post">
-                                        <?php echo e(csrf_field()); ?>
-
-                                        <?php echo e(method_field('DELETE')); ?>
-
-                                        <button class="btn btn-danger btn-xs" type="submit"><i class="fa fa-trash-o"></i> 删除</button>
-                                    </form>
+                                    <a href="<?php echo e(route('admins.delete',$item->id)); ?>"><button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o"></i> 删除</button></a>
                                 </div>
                             </td>
                         </tr>

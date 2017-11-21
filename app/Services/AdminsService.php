@@ -23,20 +23,23 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminsService
 {
+    protected $uploader;
+
     protected $adminsRepository;
 
-    protected $uploader;
+    protected $actionLogsService;
 
     /**
      * AdminsService constructor.
      * @param AdminsRepository $adminsRepository
      * @param ImageUploadHandler $imageUploadHandler
+     * @param ActionLogsService $actionLogsService
      */
-    public function __construct(AdminsRepository $adminsRepository, ImageUploadHandler $imageUploadHandler)
+    public function __construct(AdminsRepository $adminsRepository, ImageUploadHandler $imageUploadHandler,ActionLogsService $actionLogsService)
     {
-        $this->adminsRepository = $adminsRepository;
-
         $this->uploader = $imageUploadHandler;
+        $this->adminsRepository = $adminsRepository;
+        $this->actionLogsService = $actionLogsService;
     }
 
     /**
@@ -63,7 +66,7 @@ class AdminsService
         $admin = $this->adminsRepository->create($datas);
 
         //插入模型关联数据
-        $admin->roles()->attach($datas['role_id']);
+        $admin->roles()->attach($request->role_id);
 
         return $admin;
     }
@@ -97,7 +100,7 @@ class AdminsService
         $admin->update($datas);
 
         //更新关联表数据
-        $admin->roles()->sync($datas['role_id']);
+        $admin->roles()->sync($request->role_id);
 
         return $admin;
     }
@@ -124,16 +127,30 @@ class AdminsService
 
     /**
      * 登录管理员
-     * @param array $params
-     * @return mixed
+     * @param $request
+     * @return bool
      */
-    public function login(array $params)
+    public function login($request)
     {
-        return Auth::guard('admin')->attempt([
-            'name'     => $params['name'],
-            'password' => $params['password'],
+        if(!Auth::guard('admin')->attempt([
+            'name'     => $request->name,
+            'password' => $request->password,
             'status'   => 1,
-        ]);
+        ])){
+            //记录登录操作记录
+            $this->actionLogsService->loginActionLogCreate($request,false);
+            return false;
+        }
+
+        //增加登录次数.
+        $admin = Auth::guard('admin')->user();
+
+        $admin->increment('login_count');
+
+        //记录登录操作记录
+        $this->actionLogsService->loginActionLogCreate($request,true);
+
+        return true;
     }
 
     /**

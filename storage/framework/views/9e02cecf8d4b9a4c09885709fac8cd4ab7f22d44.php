@@ -1,4 +1,7 @@
 <!--左侧导航开始-->
+<?php
+    $admin = Auth::guard('admin')->user();
+?>
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="nav-close"><i class="fa fa-times-circle"></i>
     </div>
@@ -6,21 +9,23 @@
         <ul class="nav" id="side-menu">
             <li class="nav-header text-center">
                 <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="<?php echo e(Auth::guard('admin')->user()->avatr); ?>"
-                                   width="64"/></span>
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span>
+                                    <img alt="image" class="img-circle" src="<?php echo e($admin->avatr); ?>" width="64"/>
+                                </span>
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong
-                                           class="font-bold"><?php echo e(Auth::guard('admin')->user()->name); ?></strong></span>
-                                  <span class="text-muted text-xs block">
-                                    <?php $__currentLoopData = Auth::guard('admin')->user()->roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                          <?php echo e($role->name); ?>
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold"><?php echo e($admin->name); ?></strong>
+                                </span>
+                                <span class="text-muted text-xs block">
+                                    <?php $__currentLoopData = $admin->roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                      <?php echo e($role->name); ?>
 
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <b class="caret"></b>
-                                  </span>
                                 </span>
-                    </a>
+                                </span>
+                                </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a class="J_menuItem" href="form_avatar.html">修改头像</a></li>
                         <li><a class="J_menuItem" href="form_avatar.html">修改密码</a></li>
