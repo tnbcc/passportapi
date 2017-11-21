@@ -7,7 +7,6 @@
         <div class="ibox-content">
             <a class="menuid btn btn-primary btn-sm" href="javascript:history.go(-1)">返回</a> &nbsp;
             <a href="<?php echo e(route('roles.create')); ?>" link-url="javascript:void(0)"><button class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus-circle"></i> 添加角色</button></a>
-            <a class="btn btn-success btn-sm" onclick="reloadPage(window)"><i class="fa fa-refresh"></i> 刷新</a>&nbsp;
             <table class="table table-striped table-bordered table-hover m-t-md">
                 <thead>
                 <tr>

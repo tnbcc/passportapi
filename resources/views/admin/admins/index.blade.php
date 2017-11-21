@@ -8,12 +8,10 @@
         <div class="ibox-content">
             <a class="menuid btn btn-primary btn-sm" href="javascript:history.go(-1)">返回</a>
             <a href="{{route('admins.create')}}" link-url="javascript:void(0)"><button class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus-circle"></i> 添加管理员</button></a>
-            <a class="btn btn-success btn-sm" onclick="reloadPage(window)"><i class="fa fa-refresh"></i> 刷新</a>
             <form method="post" action="{{route('admins.index')}}" name="form">
                 <table class="table table-striped table-bordered table-hover m-t-md">
                     <thead>
                     <tr>
-                        <th style="text-align:center;width:1%"> <input type="checkbox" class="i-checks" id="chkall"></th>
                         <th class="text-center" width="100">ID</th>
                         <th>用户名</th>
                         <th>用户权限</th>
@@ -29,9 +27,6 @@
                     <tbody>
                     @foreach($admins as $k => $item)
                         <tr>
-                            <td style="text-align:center;width:1%">
-                                <input type="checkbox" id="ck_id" class="i-checks" name="ids[]"  value="{{$item->id}}">
-                            </td>
                             <td class="text-center">{{$item->id}}</td>
                             <td>{{$item->name}}</td>
                             <td>

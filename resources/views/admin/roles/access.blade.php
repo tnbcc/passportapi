@@ -18,7 +18,7 @@
                                 <tr class="b-group">
                                     <th width="10%">
                                         <label>
-                                            &nbsp;&nbsp;{{$item->name}}
+                                            &nbsp;&nbsp;{{$item->name}}&nbsp;
                                             <input type="checkbox" name="rule_id[]" value="{{$item->id}}" onclick="checkAll(this)" @if(in_array($item->id,$rules)) checked="checked" @endif>
                                         </label>
                                     </th>
@@ -28,7 +28,7 @@
                                 <tr class="b-group">
                                     <th width="10%">
                                         <label>
-                                            &nbsp;&nbsp;{{$item->name}}<input type="checkbox" name="rule_id[]" value="{{$item->id}}" @if(in_array($item->id,$rules)) checked="checked" @endif onclick="checkAll(this)">
+                                            &nbsp;&nbsp;{{$item->name}}&nbsp;<input type="checkbox" name="rule_id[]" value="{{$item->id}}" @if(in_array($item->id,$rules)) checked="checked" @endif onclick="checkAll(this)">
                                         </label>
                                     </th>
                                     <td class="b-child">
@@ -37,7 +37,7 @@
                                                 <tr class="b-group">
                                                     <th width="10%">
                                                         <label>
-                                                            {{$value->name}}<input type="checkbox" name="rule_id[]" value="{{$value->id}}" @if(in_array($value->id,$rules)) checked="checked" @endif onclick="checkAll(this)">
+                                                            {{$value->name}}&nbsp;<input type="checkbox" name="rule_id[]" value="{{$value->id}}" @if(in_array($value->id,$rules)) checked="checked" @endif onclick="checkAll(this)">
                                                         </label>
                                                     </th>
                                                     <td>

@@ -40,7 +40,7 @@
                 <?php if($rule['route'] == 'index.index'): ?>
                     <li>
                         <a title="<?php echo e($rule['name']); ?>" href="<?php echo e(route($rule['route'])); ?>" target="_blank">
-                            <i class="fa fa-home"></i>
+                            <i class="fa <?php echo e($rule['fonts']); ?>"></i>
                             <span class="nav-label"><?php echo e($rule['name']); ?></span>
                         </a>
                         <?php if(isset($rule['children'])): ?>
@@ -53,7 +53,7 @@
                     <li>
                 <?php else: ?>
                     <li>
-                        <a title="<?php echo e($rule['name']); ?>"> <i class="fa fa-user"></i>
+                        <a title="<?php echo e($rule['name']); ?>"> <i class="fa fa-<?php echo e($rule['fonts']); ?>"></i>
                             <span class="nav-label"><?php echo e($rule['name']); ?></span>
                             <span class="fa arrow"></span>
                         </a>

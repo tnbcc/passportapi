@@ -18,8 +18,7 @@
                                 <tr class="b-group">
                                     <th width="10%">
                                         <label>
-                                            &nbsp;&nbsp;<?php echo e($item->name); ?>
-
+                                            &nbsp;&nbsp;<?php echo e($item->name); ?>&nbsp;
                                             <input type="checkbox" name="rule_id[]" value="<?php echo e($item->id); ?>" onclick="checkAll(this)" <?php if(in_array($item->id,$rules)): ?> checked="checked" <?php endif; ?>>
                                         </label>
                                     </th>
@@ -29,7 +28,7 @@
                                 <tr class="b-group">
                                     <th width="10%">
                                         <label>
-                                            &nbsp;&nbsp;<?php echo e($item->name); ?><input type="checkbox" name="rule_id[]" value="<?php echo e($item->id); ?>" <?php if(in_array($item->id,$rules)): ?> checked="checked" <?php endif; ?> onclick="checkAll(this)">
+                                            &nbsp;&nbsp;<?php echo e($item->name); ?>&nbsp;<input type="checkbox" name="rule_id[]" value="<?php echo e($item->id); ?>" <?php if(in_array($item->id,$rules)): ?> checked="checked" <?php endif; ?> onclick="checkAll(this)">
                                         </label>
                                     </th>
                                     <td class="b-child">
@@ -38,7 +37,7 @@
                                                 <tr class="b-group">
                                                     <th width="10%">
                                                         <label>
-                                                            <?php echo e($value->name); ?><input type="checkbox" name="rule_id[]" value="<?php echo e($value->id); ?>" <?php if(in_array($value->id,$rules)): ?> checked="checked" <?php endif; ?> onclick="checkAll(this)">
+                                                            <?php echo e($value->name); ?>&nbsp;<input type="checkbox" name="rule_id[]" value="<?php echo e($value->id); ?>" <?php if(in_array($value->id,$rules)): ?> checked="checked" <?php endif; ?> onclick="checkAll(this)">
                                                         </label>
                                                     </th>
                                                     <td>

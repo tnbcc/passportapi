@@ -1,9 +1,16 @@
 
+
+<?php $__env->startSection('css'); ?>
+    <style>
+        .animated{-webkit-animation-fill-mode: none;}
+    </style>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-sm-12">
         <div class="ibox-title">
-            <h5>添加权限</h5>
+            <h5>编辑权限</h5>
         </div>
         <div class="ibox-content">
             <a href="<?php echo e(route('rules.index')); ?>">
@@ -25,10 +32,16 @@
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">菜单图标：</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="fonts" id="fonts" onclick="showicon()" value="<?php echo e($rule->fonts); ?>"  placeholder="菜单图标" class="form-control">
+                        <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 采用Font Awesome字体图标</span> </div>
+                </div>
+                <div class="hr-line-dashed m-t-sm m-b-sm"></div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label">权限名称：</label>
                     <div class="col-sm-3">
-                        <input type="text" name="name" value="<?php echo e($rule->name); ?>" class="form-control" required
-                               data-msg-required="请输入权限名称">
+                        <input type="text" name="name" value="<?php echo e($rule->name); ?>" class="form-control" required data-msg-required="请输入权限名称">
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -83,6 +96,29 @@
         </div>
     </div>
 </div>
+<div id="functions" style="display: none;">
+    <?php echo $__env->make('admin.rules.fonticon', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</div>
+<?php $__env->startSection('footer-js'); ?>
+    <script>
+
+        function showicon(){
+            layer.open({
+                type: 1,
+                title:'点击选择图标',
+                area: ['800px', '80%'], //宽高
+                anim: 2,
+                shadeClose: true, //开启遮罩关闭
+                content: $('#functions')
+            });
+        }
+        $('.fontawesome-icon-list .fa-hover').find('a').click(function(){
+            var str=$(this).text();
+            $('#fonts').val( $.trim(str));
+            layer.closeAll();
+        })
+    </script>
+<?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('admin.layouts.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

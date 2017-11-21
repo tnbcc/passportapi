@@ -16,13 +16,19 @@
                     <label class="col-sm-2 control-label">角色名称：</label>
                     <div class="input-group col-sm-2">
                         <input type="text" class="form-control" name="name" value="{{$role->name}}" required data-msg-required="请输入角色名称">
+                        @if ($errors->has('name'))
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>{{$errors->first('name')}}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">角色描述：</label>
                     <div class="input-group col-sm-3">
-                        <textarea name="remark" class="form-control" rows="5" cols="20" required data-msg-required="请输入角色描述">{{$role->remark}}</textarea>
+                        <textarea name="remark" class="form-control" rows="5" cols="20" data-msg-required="请输入角色描述">{{$role->remark}}</textarea>
+                        @if ($errors->has('remark'))
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>{{$errors->first('remark')}}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -30,6 +36,9 @@
                     <label class="col-sm-2 control-label">排序：</label>
                     <div class="input-group col-sm-1">
                         <input type="text" class="form-control" name="order" value="{{$role->order}}" required data-msg-required="请输入排序">
+                        @if ($errors->has('order'))
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>{{$errors->first('order')}}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>
@@ -40,6 +49,9 @@
                             <option value="1" @if($role->status == 1) selected="selected" @endif>启用</option>
                             <option value="2" @if($role->status == 2) selected="selected" @endif>禁用</option>
                         </select>
+                        @if ($errors->has('status'))
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>{{$errors->first('status')}}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="hr-line-dashed m-t-sm m-b-sm"></div>

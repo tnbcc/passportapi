@@ -7,12 +7,10 @@
         <div class="ibox-content">
             <a class="menuid btn btn-primary btn-sm" href="javascript:history.go(-1)">返回</a>
             <a href="<?php echo e(route('admins.create')); ?>" link-url="javascript:void(0)"><button class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus-circle"></i> 添加管理员</button></a>
-            <a class="btn btn-success btn-sm" onclick="reloadPage(window)"><i class="fa fa-refresh"></i> 刷新</a>
             <form method="post" action="<?php echo e(route('admins.index')); ?>" name="form">
                 <table class="table table-striped table-bordered table-hover m-t-md">
                     <thead>
                     <tr>
-                        <th style="text-align:center;width:1%"> <input type="checkbox" class="i-checks" id="chkall"></th>
                         <th class="text-center" width="100">ID</th>
                         <th>用户名</th>
                         <th>用户权限</th>
@@ -28,9 +26,6 @@
                     <tbody>
                     <?php $__currentLoopData = $admins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td style="text-align:center;width:1%">
-                                <input type="checkbox" id="ck_id" class="i-checks" name="ids[]"  value="<?php echo e($item->id); ?>">
-                            </td>
                             <td class="text-center"><?php echo e($item->id); ?></td>
                             <td><?php echo e($item->name); ?></td>
                             <td>

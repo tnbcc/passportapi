@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\AdminLoginRequest;
-use App\Repositories\RolesRepository;
-use App\Services\AdminsService;
+use App\Http\Requests\Admin\AdminRequest;
 use Illuminate\Http\Request;
+use App\Services\AdminsService;
+use App\Repositories\RolesRepository;
+use App\Http\Requests\Admin\AdminLoginRequest;
 
 class AdminsController extends BaseController
 {
@@ -46,10 +47,10 @@ class AdminsController extends BaseController
     }
 
     /**
-     * @param Request $request
+     * @param AdminRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(AdminRequest $request)
     {
         $this->adminsService->create($request);
 
@@ -73,11 +74,11 @@ class AdminsController extends BaseController
     }
 
     /**
-     * @param Request $request
+     * @param AdminRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request,$id)
+    public function update(AdminRequest $request,$id)
     {
         $this->adminsService->update($request,$id);
 
@@ -135,7 +136,7 @@ class AdminsController extends BaseController
         return redirect()->route('admins.index');
     }
 
-    public function showLoginForm(Request $request)
+    public function showLoginForm()
     {
         return view('admin.admins.login');
     }

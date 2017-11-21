@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Handlers\Tree;
+use App\Http\Requests\Admin\RoleRequest;
 use App\Models\Role;
 use App\Repositories\RulesRepository;
 use Illuminate\Http\Request;
@@ -32,11 +33,11 @@ class RolesController extends BaseController
 
     /**
      * 添加角色
-     * @param Request $request
+     * @param RoleRequest $request
      * @param Role $role
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request, Role $role)
+    public function store(RoleRequest $request, Role $role)
     {
         $role->fill($request->all());
 
@@ -58,11 +59,11 @@ class RolesController extends BaseController
     }
 
     /**
-     * @param Request $request
+     * @param RoleRequest $request
      * @param Role $role
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleRequest $request, Role $role)
     {
         $role->update($request->all());
 

@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rule extends Model
 {
-    protected $fillable = ['name', 'route', 'parent_id', 'is_hidden', 'sort', 'status'];
+    protected $fillable = ['name', 'fonts', 'route', 'parent_id', 'is_hidden', 'sort', 'status'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function roles()
     {
-        return $this->belongsToMany(Role::class,'role_auth')->withTimestamps();
+        return $this->belongsToMany(Role::class, 'role_auth')->withTimestamps();
     }
 
 
@@ -24,6 +24,6 @@ class Rule extends Model
      */
     public function scopePublic($query)
     {
-        return $query->where('is_hidden',0);
+        return $query->where('is_hidden', 0);
     }
 }
