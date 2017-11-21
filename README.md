@@ -77,6 +77,6 @@
 ### 8. 导入根目录下的sql文件
 
 ### 9.链接入口
-> 管理后台：http://yicms.dev/login
+> 管理后台：http://yicms.dev/admin/login
 
 至此, 安装完成 ^_^。
