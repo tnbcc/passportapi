@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\RuleRequest;
 use App\Services\RulesService;
 use Illuminate\Http\Request;
 
@@ -39,10 +40,10 @@ class RulesController extends BaseController
     }
 
     /**
-     * @param Request $request
+     * @param RuleRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(RuleRequest $request)
     {
         $this->rulesService->create($request->all());
 
@@ -65,11 +66,11 @@ class RulesController extends BaseController
     }
 
     /**
-     * @param Request $request
+     * @param RuleRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(RuleRequest $request, $id)
     {
         $rule = $this->rulesService->ById($id);
         if(is_null($rule))

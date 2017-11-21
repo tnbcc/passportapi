@@ -20,6 +20,7 @@
                     <tr>
                         <th>权限名称</th>
                         <th>权限方法</th>
+                        <th class="text-center" width="100">图标</th>
                         <th class="text-center" width="100">排序</th>
                         <th class="text-center" width="100">是否显示</th>
                         <th class="text-center" width="250">操作</th>
@@ -30,6 +31,7 @@
                 <tr>
                     <td>{{$item['_name']}}</td>
                     <td>{{$item['route']}}</td>
+                    <td style="text-align:center"><i class="fa fa-{{isset($item['fonts']) ? $item['fonts'] : 'desktop'}}"></i></td>
                     <td class="text-center">{{$item['sort']}}</td>
                     <td class="text-center">
                         @if($item['is_hidden'] == 0)
@@ -54,7 +56,7 @@
                         <form class="form-common" action="{{route('rules.destroy',$item['id'])}}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o"></i> 删除</button>
+                            <button class="btn btn-danger btn-xs" type="submit"><i class="fa fa-trash-o"></i> 删除</button>
                         </form>
                     </td>
                 </tr>

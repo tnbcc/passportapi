@@ -20,6 +20,7 @@
                     <tr>
                         <th>权限名称</th>
                         <th>权限方法</th>
+                        <th class="text-center" width="100">图标</th>
                         <th class="text-center" width="100">排序</th>
                         <th class="text-center" width="100">是否显示</th>
                         <th class="text-center" width="250">操作</th>
@@ -30,6 +31,7 @@
                 <tr>
                     <td><?php echo e($item['_name']); ?></td>
                     <td><?php echo e($item['route']); ?></td>
+                    <td style="text-align:center"><i class="fa fa-<?php echo e(isset($item['fonts']) ? $item['fonts'] : 'desktop'); ?>"></i></td>
                     <td class="text-center"><?php echo e($item['sort']); ?></td>
                     <td class="text-center">
                         <?php if($item['is_hidden'] == 0): ?>
@@ -56,7 +58,7 @@
 
                             <?php echo e(method_field('DELETE')); ?>
 
-                            <button class="btn btn-danger btn-xs" type="button"><i class="fa fa-trash-o"></i> 删除</button>
+                            <button class="btn btn-danger btn-xs" type="submit"><i class="fa fa-trash-o"></i> 删除</button>
                         </form>
                     </td>
                 </tr>

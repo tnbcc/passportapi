@@ -39,7 +39,7 @@
                 @if($rule['route'] == 'index.index')
                     <li>
                         <a title="{{$rule['name']}}" href="{{route($rule['route'])}}" target="_blank">
-                            <i class="fa {{$rule['fonts']}}"></i>
+                            <i class="fa fa-{{$rule['fonts']}}"></i>
                             <span class="nav-label">{{$rule['name']}}</span>
                         </a>
                         @if(isset($rule['children']))

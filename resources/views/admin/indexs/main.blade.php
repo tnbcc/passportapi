@@ -67,13 +67,7 @@
         <div class="panel-body" id="panel-bodys" style="display: block;">
           <table class="table table-hover personal-task">
             <tbody>
-            <volist name="jokelist" id="v">
-              <tr>
-                <td>{$v.type|getjokecate}</td>
-                <td><a href="{:U('/admin/joke/edit',array('id'=>$v['id']))}">{$v.title|mb_substr=0,50,'UTF-8'}</a></td>
-                <td width="110">{$v.create_time|date='m-d H:i:s',###}</td>
-              </tr>
-            </volist>
+
             </tbody>
           </table>
         </div>
@@ -100,19 +94,19 @@
               <td></td>
             </tr>
             <tr>
-              <td><strong>程序名称</strong>：源神CMS笑话系统 </td>
+              <td><strong>程序名称</strong>：YICMS系统 </td>
               <td></td>
             </tr>
             <tr>
-              <td><strong>当前版本</strong>：V4.4</td>
+              <td><strong>当前版本</strong>：V1.0</td>
               <td></td>
             </tr>
             <tr>
-              <td><strong>开发团队</strong>：梦龙、背着棺材跳舞 、翱翔蔚蓝 </td>
+              <td><strong>开发团队</strong>：科诺设计 </td>
               <td></td>
             </tr>
             <tr>
-              <td><strong>版权所有</strong>：<a href="http://www.168282.com" target="_bliank">安徽源神网络科技有限公司</a> </td>
+              <td><strong>版权所有</strong>：<a href="http://www.yicms.vip" target="_bliank">YICMS</a> </td>
               <td></td>
             </tr>
             <tr>
@@ -132,22 +126,12 @@
             </tr>
             <tr>
               <td>
-                <strong>MySQL版本</strong>：{$mysql}</td>
+                <strong>官方网址</strong>：http://www.yicms.vip</td>
               <td></td>
             </tr>
             <tr>
               <td>
-                <strong>官方网址</strong>：http://www.168282.com</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                <strong>客服QQ</strong>：4008885302</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                <strong>服务热线</strong>：400-888-5302</td>
+                <strong>开发者QQ</strong>：1402992668</td>
               <td></td>
             </tr>
             </tbody>
@@ -163,44 +147,26 @@
         <h5>系统更新日志</h5>
       </div>
       <div class="ibox-content timeline">
-        <div class="timeline-item">
-          <div class="row">
-            <div class="col-xs-3 date">
-              <i class="fa fa-file-text"></i>
-              <small class="text-navy">2017年3月30日更新</small>
-            </div>
-            <div class="col-xs-7 content">
-              <p class="m-b-xs"><strong>源神CMS笑话系统V4.4</strong>
-              </p>
-              <p>
-                1、修复后台开启水印时缺少字体 √<br>
-                1、修复视频上传到七牛云后没有后缀导致手机端无法播放 √<br>
-                2、填加了火车头采集后台生成GIF缩略图 √<br>
-                3、填加了定时任务审核功能 √<br>
-                4、修复了后台一些样式问题 √<br>
-                5、修复了安装软件的流程！√<br>
-                6、PC+WAP端发布页一处BUG修复√<br>
-              </p>
-            </div>
-          </div>
-        </div>
 
         <div class="timeline-item">
           <div class="row">
             <div class="col-xs-3 date">
               <i class="fa fa-file-text"></i>
-              <small class="text-navy">2015年10月份</small>
+              <small class="text-navy">2017年11月21日更新</small>
             </div>
             <div class="col-xs-7 content">
-              <p class="m-b-xs"><strong>虾囧CMSV1.0诞生</strong>
+              <p class="m-b-xs"><strong>YICMS V1.0</strong>
               </p>
               <p>
-                有段子、趣图、GIF动图、视频、笑点、神回复、积分商城等栏目<br>
-                网址：http://www.xiajiong.com
+                1、使用Auth进行后台管理员登陆认证√<br>
+                1、RBAC权限操作日志完成以及RBAC缓存优化机制 √<br>
+                2、增加后台管理员操作日志记录 √<br>
+                3、后台权限日志增加登录操作记录以及细节BUG修复 √<br>
               </p>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
