@@ -52,7 +52,7 @@
 > 目前为YICMS 1.0版本
 
 ### 1.克隆源码到本地
-> git https://github.com/kenuocn/yicms.git
+> git clone https://github.com/kenuocn/yicms.git
 
 ### 2.进入项目目录
 > cd yicms
