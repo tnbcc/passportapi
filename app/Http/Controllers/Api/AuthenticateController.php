@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Api\AuthenticateRequest;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,6 @@ use Socialite;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Validator;
 
 class AuthenticateController extends ApiController
 {
@@ -30,20 +30,8 @@ class AuthenticateController extends ApiController
     }
 
     // 登录
-    public function login(Request $request)
+    public function login(AuthenticateRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'phone'    => 'required|exists:user',
-            'password' => 'required|between:5,32',
-        ]);
-
-        if ($validator->fails()) {
-            $request->request->add([
-                'errors' => $validator->errors()->toArray(),
-                'code' => 401,
-            ]);
-            return $this->sendFailedLoginResponse($request);
-        }
 
         $credentials = $this->credentials($request);
 
@@ -115,7 +103,6 @@ class AuthenticateController extends ApiController
 
         // 个人感觉通过.env配置太复杂，直接从数据库查更方便
         $password_client = Client::query()->where('password_client',1)->latest()->first();
-
         $request->request->add([
             'grant_type' => 'password',
             'client_id' => $password_client->id,

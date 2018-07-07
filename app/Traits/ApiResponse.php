@@ -1,7 +1,9 @@
 <?php
 namespace App\Traits;
+
 use Symfony\Component\HttpFoundation\Response as FoundationResponse;
 use Response;
+
 trait ApiResponse
 {
     /**
