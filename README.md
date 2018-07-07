@@ -29,24 +29,11 @@ Api采用 [passport](https://laravel-china.org/docs/laravel/5.6/passport/1380)
 
 ### 管理员管理
 
-![1](public/preview/admins/1.png)
-![2](public/preview/admins/2.png)
-![3](public/preview/admins/3.png)
-
 ### 角色管理
-
-![1](public/preview/roles/1.png)
-![2](public/preview/roles/2.png)
-![3](public/preview/roles/3.png)
 
 ### 权限管理
 
-![1](public/preview/rules/1.png)
-![2](public/preview/rules/2.png)
-
 ### 操作日志
-
-![1](public/preview/actions/1.png)
 
 ## 安装
 
