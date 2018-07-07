@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-07-07 03:25:24.
+    * Generated on 2018-07-07 14:08:38.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -43,6 +43,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
         'flash' => \Laracasts\Flash\FlashNotifier::class,
+        'League\OAuth2\Server\AuthorizationServer' => \League\OAuth2\Server\AuthorizationServer::class,
+        'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'geetest' => \Germey\Geetest\GeetestLib::class,
@@ -181,6 +183,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
         'flash' => \Laracasts\Flash\FlashNotifier::class,
+        'League\OAuth2\Server\AuthorizationServer' => \League\OAuth2\Server\AuthorizationServer::class,
+        'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'geetest' => \Germey\Geetest\GeetestLib::class,
@@ -319,6 +323,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
         'flash' => \Laracasts\Flash\FlashNotifier::class,
+        'League\OAuth2\Server\AuthorizationServer' => \League\OAuth2\Server\AuthorizationServer::class,
+        'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'geetest' => \Germey\Geetest\GeetestLib::class,
@@ -457,6 +463,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
         'flash' => \Laracasts\Flash\FlashNotifier::class,
+        'League\OAuth2\Server\AuthorizationServer' => \League\OAuth2\Server\AuthorizationServer::class,
+        'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'geetest' => \Germey\Geetest\GeetestLib::class,
@@ -595,6 +603,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
         'flash' => \Laracasts\Flash\FlashNotifier::class,
+        'League\OAuth2\Server\AuthorizationServer' => \League\OAuth2\Server\AuthorizationServer::class,
+        'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'geetest' => \Germey\Geetest\GeetestLib::class,
@@ -733,6 +743,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
         'flash' => \Laracasts\Flash\FlashNotifier::class,
+        'League\OAuth2\Server\AuthorizationServer' => \League\OAuth2\Server\AuthorizationServer::class,
+        'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'geetest' => \Germey\Geetest\GeetestLib::class,
@@ -871,6 +883,8 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'Laracasts\Flash\SessionStore' => \Laracasts\Flash\LaravelSessionStore::class,
         'flash' => \Laracasts\Flash\FlashNotifier::class,
+        'League\OAuth2\Server\AuthorizationServer' => \League\OAuth2\Server\AuthorizationServer::class,
+        'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'geetest' => \Germey\Geetest\GeetestLib::class,

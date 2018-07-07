@@ -36,6 +36,7 @@ class AuthenticateController extends ApiController
         $credentials = $this->credentials($request);
 
         if ($this->guard('api')->attempt($credentials, $request->has('remember'))) {
+
             return $this->sendLoginResponse($request);
         }
 
@@ -103,23 +104,22 @@ class AuthenticateController extends ApiController
 
         // 个人感觉通过.env配置太复杂，直接从数据库查更方便
         $password_client = Client::query()->where('password_client',1)->latest()->first();
-        $request->request->add([
+        $client = new \GuzzleHttp\Client();
+        $url = config('app.url') . '/oauth/token';
+        $params = [
             'grant_type' => 'password',
             'client_id' => $password_client->id,
             'client_secret' => $password_client->secret,
             'username' => $credentials['phone'],
             'password' => $credentials['password'],
             'scope' => ''
-        ]);
+        ];
+        $respond = $client->request('POST', $url, ['form_params' => $params]);
 
-        $proxy = Request::create(
-            'oauth/token',
-            'POST'
-        );
 
-        $response = \Route::dispatch($proxy);
-
-        return $response;
+        if ($respond->getStatusCode() !== 401) {
+            return json_decode($respond->getBody()->getContents(), true);
+        }
     }
 
     protected function authenticated(Request $request)

@@ -79,9 +79,11 @@ class ExceptionReport
      */
     public function report(){
 
+        //$message = $this->doReport[$this->report];
+
         $message = $this->doReport[$this->report];
 
-        return response()->json([ 'success' => false, 'message' => $message['0'] ,'status_code'=>$message['1']], 200);
+        return $this->failed($message[0],$message[1]);
 
     }
 

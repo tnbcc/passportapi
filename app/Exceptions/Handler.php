@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use App\Traits\ExceptionReport;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -57,6 +58,17 @@ class Handler extends ExceptionHandler
             }
             return response()->json(['message'=>$msg,'status_code'=>400], 200);
         }
+
+       if (in_array('api', $exception->guards())) {
+            if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+                $msg = '未授权';
+                return response()->json([ 'success' => false, 'message' => $msg ,'status_code'=>400], 200);
+            }
+            if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+                $msg = '该模型未找到';
+                return response()->json([ 'success' => false, 'message' => $msg ,'status_code'=>400], 200);
+            }
+        }
         $reporter = ExceptionReport::make($exception);
 
         if ($reporter->shouldReturn()){
@@ -65,6 +77,22 @@ class Handler extends ExceptionHandler
 
 
 
+
         return parent::render($request, $exception);
     }
+
+    /*protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+        if (in_array('api', $exception->guards())) {
+            return response()->json(['message'=>'需要授权','status_code'=>400], 200);
+        }
+        //前后台登录分离
+        if (in_array('admin', $exception->guards())) {
+            return redirect()->guest(route('admin.login'));
+        }
+        return redirect()->guest(route('login'));
+    }*/
 }
