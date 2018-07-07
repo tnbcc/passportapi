@@ -56,7 +56,7 @@ Api采用 [passport](https://laravel-china.org/docs/laravel/5.6/passport/1380)
 > git clone https://github.com/tnbcc/passportapi.git
 
 ### 2.进入项目目录
-> cd passport
+> cd passportapi
 
 ### 3.给目录权限
 > chmod -R 777 storage bootstrap
@@ -73,11 +73,14 @@ Api采用 [passport](https://laravel-china.org/docs/laravel/5.6/passport/1380)
 
 ### 7. 安装扩展包依赖
 下载`laravel`相关依赖的包
+
 > composer install
+### 8. 生成加密密钥
+> php artisan passport:install
 
-### 8. 导入根目录下的passport.sql文件
+### 9. 导入根目录下的passport.sql文件
 
-### 9.链接入口
+### 10.链接入口
 > 管理后台：http://passport.dev/admin/login
 
 至此, 安装完成 ^_^。
