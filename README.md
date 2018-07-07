@@ -7,13 +7,14 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Laravel-Yicms
+## Laravel-passport
 
 基于**Laravel5.5** 开发
 
 ## 前言
 基于 [laravel](http://www.laravel.com/)开发.
 后台模板采用 [H+](http://www.zi-han.net/theme/hplus/)
+Api采用 [passport](https://laravel-china.org/docs/laravel/5.6/passport/1380)
 
 ## 功能
 
@@ -49,13 +50,13 @@
 
 ## 安装
 
-> 目前为YICMS 1.0版本
+> 目前为 v1.0版本
 
 ### 1.克隆源码到本地
-> git clone https://github.com/kenuocn/yicms.git
+> git clone https://github.com/tnbcc/passportapi.git
 
 ### 2.进入项目目录
-> cd yicms
+> cd passport
 
 ### 3.给目录权限
 > chmod -R 777 storage bootstrap
@@ -74,9 +75,9 @@
 下载`laravel`相关依赖的包
 > composer install
 
-### 8. 导入根目录下的sql文件
+### 8. 导入根目录下的passport.sql文件
 
 ### 9.链接入口
-> 管理后台：http://yicms.dev/admin/login
+> 管理后台：http://passport.dev/admin/login
 
 至此, 安装完成 ^_^。

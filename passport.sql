@@ -5,7 +5,7 @@
  Source Server Type    : MySQL
  Source Server Version : 50719
  Source Host           : 127.0.0.1
- Source Database       : yicms
+ Source Database       : passport
 
  Target Server Type    : MySQL
  Target Server Version : 50719
@@ -85,7 +85,7 @@ CREATE TABLE `admins` (
 --  Records of `admins`
 -- ----------------------------
 BEGIN;
-INSERT INTO `admins` VALUES ('1', '科诺设计', '$2y$10$jkIO148FM6Ll/fPDE6.p4OtNk9grAPCmJLr84pnJhLA7Mkr8HcNDa', '/uploads/images/avatrs/201711/13//1510542803_2gM4ffLylf.jpeg', '7', '127.0.0.1', '127.0.0.1', '1', '2017-11-12 11:21:32', '2017-11-21 09:02:27'), ('2', 'kenuo', '$2y$10$bd5c1KVPi9v7LxFp38eEzuvOi9l10Qa.XkBMyQZvWqOw5T1RaEgzC', '/uploads/images/avatrs/201711/20//1511187903_Wm8IDdgbl0.jpeg', '0', '127.0.0.1', '127.0.0.1', '1', '2017-11-12 11:21:46', '2017-11-20 14:25:03');
+INSERT INTO `admins` VALUES ('1', '初三在读', '$2y$10$jkIO148FM6Ll/fPDE6.p4OtNk9grAPCmJLr84pnJhLA7Mkr8HcNDa', '/uploads/images/avatrs/201711/13//1510542803_2gM4ffLylf.jpeg', '7', '127.0.0.1', '127.0.0.1', '1', '2017-11-12 11:21:32', '2017-11-21 09:02:27'), ('2', 'kenuo', '$2y$10$bd5c1KVPi9v7LxFp38eEzuvOi9l10Qa.XkBMyQZvWqOw5T1RaEgzC', '/uploads/images/avatrs/201711/20//1511187903_Wm8IDdgbl0.jpeg', '0', '127.0.0.1', '127.0.0.1', '1', '2017-11-12 11:21:46', '2017-11-20 14:25:03');
 COMMIT;
 
 -- ----------------------------

@@ -1,18 +1,4 @@
 <?php
-/**
- * YICMS
- * ============================================================================
- * 版权所有 2014-2017 YICMS，并保留所有权利。
- * 网站地址: http://www.yicms.vip
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！
- * 不允许对程序代码以任何形式任何目的的再发布。
- * ============================================================================
- * Created by PhpStorm.
- * Author: kenuo
- * Date: 2017/11/17
- * Time: 下午4:38
- */
 
 namespace App\Services;
 
@@ -48,6 +34,10 @@ class ActionLogsService
     {
         //获取当前登录管理员信息
         $admin = Auth::guard('admin')->user();
+        if(!$admin) {
+            $url = 'admin.login';
+            return viewError('帐号异常',$url);
+        }
 
         $ip = $request->getClientIp();
 
@@ -60,9 +50,10 @@ class ActionLogsService
             'address'=> $address[0].$address[1].$address[2],
             'action'=> $action,
         ];
-
+        $datas['admin_id'] = $admin->id;
         $datas['data'] = json_encode($data);
         $datas['type'] = 2;
+        isset($admin->id) ? $datas['admin_id'] = $admin->id : null;
         return $this->actionLogsRepository->create($datas);
     }
 

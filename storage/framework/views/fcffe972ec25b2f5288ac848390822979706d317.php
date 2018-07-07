@@ -91,7 +91,7 @@
               <td></td>
             </tr>
             <tr>
-              <td><strong>程序名称</strong>：YICMS系统 </td>
+              <td><strong>程序名称</strong>：passport系统 </td>
               <td></td>
             </tr>
             <tr>
@@ -99,11 +99,11 @@
               <td></td>
             </tr>
             <tr>
-              <td><strong>开发团队</strong>：科诺设计 </td>
+              <td><strong>开发团队</strong>：nbc设计 </td>
               <td></td>
             </tr>
             <tr>
-              <td><strong>版权所有</strong>：<a href="http://www.yicms.vip" target="_bliank">YICMS</a> </td>
+              <td><strong>版权所有</strong>：<a href="http://www.laraveltalk.top" target="_bliank">nbc</a> </td>
               <td></td>
             </tr>
             <tr>
@@ -123,12 +123,12 @@
             </tr>
             <tr>
               <td>
-                <strong>官方网址</strong>：http://www.yicms.vip</td>
+                <strong>官方网址</strong>：http://www.laraveltalk.top</td>
               <td></td>
             </tr>
             <tr>
               <td>
-                <strong>开发者QQ</strong>：1402992668</td>
+                <strong>开发者QQ</strong>：726352336</td>
               <td></td>
             </tr>
             </tbody>
@@ -152,7 +152,7 @@
               <small class="text-navy">2017年11月21日更新</small>
             </div>
             <div class="col-xs-7 content">
-              <p class="m-b-xs"><strong>YICMS V1.0</strong>
+              <p class="m-b-xs"><strong>passport V1.0</strong>
               </p>
               <p>
                 1、使用Auth进行后台管理员登陆认证√<br>
