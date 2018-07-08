@@ -4,6 +4,7 @@ namespace App\Traits;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 
 class ExceptionReport
@@ -29,7 +30,7 @@ class ExceptionReport
      * @param Request $request
      * @param Exception $exception
      */
-    function __construct(Request $request, Exception $exception)
+    public function __construct(Request $request,Exception $exception)
     {
         $this->request = $request;
         $this->exception = $exception;
@@ -40,7 +41,8 @@ class ExceptionReport
      */
     public $doReport = [
         AuthenticationException::class => ['未授权',401],
-        ModelNotFoundException::class => ['改模型未找到',404]
+        ModelNotFoundException::class => ['该模型未找到',404],
+        ValidationException::class => []
     ];
 
     /**
@@ -48,18 +50,21 @@ class ExceptionReport
      */
     public function shouldReturn(){
 
-        if (! ($this->request->wantsJson() || $this->request->ajax())){
-            return false;
-        }
 
-        foreach (array_keys($this->doReport) as $report){
 
-            if ($this->exception instanceof $report){
+        foreach (array_keys($this->doReport) as $report) {
 
-                $this->report = $report;
-                return true;
+            if (in_array('api', $this->exception->guards())) {
+                if ($this->exception instanceof $report) {
+
+                    $this->report = $report;
+                    return true;
+                }
+
             }
+
         }
+
 
         return false;
 
@@ -69,9 +74,9 @@ class ExceptionReport
      * @param Exception $e
      * @return static
      */
-    public static function make(Exception $e){
+    public static function make($request,$e){
 
-        return new static(\request(),$e);
+        return new static($request,$e);
     }
 
     /**
@@ -79,11 +84,20 @@ class ExceptionReport
      */
     public function report(){
 
-        //$message = $this->doReport[$this->report];
 
+       /* if ($this->exception instanceof ValidationException){
+
+            $data =$this->exception->validator->getMessageBag();
+            $msg = collect($data)->first();
+            if(is_array($msg)){
+                $msg = $msg[0];
+            }
+            return response()->json(['message'=>$msg,'status_code'=>400], 200);
+
+        }*/
         $message = $this->doReport[$this->report];
 
-        return $this->failed($message[0],$message[1]);
+        return response()->json(['message'=>$message['0'],'status_code'=>400], 200);
 
     }
 
