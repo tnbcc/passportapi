@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-
+use App\Http\Resources\User as UserCollection;
+use App\Models\User;
+use Illuminate\Support\Facades\Input;
 class ProductController extends ApiController
 {
     /**
@@ -12,7 +14,7 @@ class ProductController extends ApiController
      */
     public function index()
     {
-        echo 111;
+        return UserCollection::collection(User::paginate(Input::get('limit') ?: 20));
     }
 
     /**

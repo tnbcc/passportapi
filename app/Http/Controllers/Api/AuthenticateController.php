@@ -116,7 +116,6 @@ class AuthenticateController extends ApiController
         ];
         $respond = $client->request('POST', $url, ['form_params' => $params]);
 
-
         if ($respond->getStatusCode() !== 401) {
             return json_decode($respond->getBody()->getContents(), true);
         }

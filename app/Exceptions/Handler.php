@@ -64,7 +64,7 @@ class Handler extends ExceptionHandler
 
 
 
-            if (strpos ( url()->current(),'api')) {
+           if (strpos ( url()->current(),'api')) {
                 if (in_array('api', $exception->guards())) {
                     if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
                         $msg = '未授权';
