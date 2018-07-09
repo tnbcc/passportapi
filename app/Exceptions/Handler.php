@@ -64,15 +64,17 @@ class Handler extends ExceptionHandler
 
 
 
-            if (in_array('api', $exception->guards()) &&  strpos ( url()->current(),'api')) {
-            if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
-                $msg = '未授权';
-                return response()->json([ 'success' => false, 'message' => $msg ,'status_code'=>401], 200);
-            }
-            if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
-                $msg = '该模型未找到';
-                return response()->json([ 'success' => false, 'message' => $msg ,'status_code'=>400], 200);
-            }
+            if (strpos ( url()->current(),'api')) {
+                if (in_array('api', $exception->guards())) {
+                    if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+                        $msg = '未授权';
+                        return response()->json(['success' => false, 'message' => $msg, 'status_code' => 401], 200);
+                    }
+                    if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+                        $msg = '该模型未找到';
+                        return response()->json(['success' => false, 'message' => $msg, 'status_code' => 400], 200);
+                    }
+                }
         }
        /* $reporter = ExceptionReport::make($request,$exception);
 
