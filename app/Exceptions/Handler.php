@@ -51,18 +51,20 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
 
-            /*if ($exception instanceof \Illuminate\Validation\ValidationException) {
-                $data = $exception->validator->getMessageBag();
-                $msg = collect($data)->first();
-                if (is_array($msg)) {
-                    $msg = $msg[0];
-                }
-                return response()->json(['message' => $msg, 'status_code' => 400], 200);
-            }*/
+       if ( strpos ( url()->current(),'api')) {
+           if ($exception instanceof \Illuminate\Validation\ValidationException) {
+               $data = $exception->validator->getMessageBag();
+               $msg = collect($data)->first();
+               if (is_array($msg)) {
+                   $msg = $msg[0];
+               }
+               return response()->json(['message' => $msg, 'status_code' => 400], 200);
+           }
+       }
 
 
 
-            /*if (in_array('api', $exception->guards())) {
+            if (in_array('api', $exception->guards()) &&  strpos ( url()->current(),'api')) {
             if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
                 $msg = '未授权';
                 return response()->json([ 'success' => false, 'message' => $msg ,'status_code'=>401], 200);
@@ -71,7 +73,7 @@ class Handler extends ExceptionHandler
                 $msg = '该模型未找到';
                 return response()->json([ 'success' => false, 'message' => $msg ,'status_code'=>400], 200);
             }
-        }*/
+        }
        /* $reporter = ExceptionReport::make($request,$exception);
 
         if ($reporter->shouldReturn()){

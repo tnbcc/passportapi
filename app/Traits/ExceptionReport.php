@@ -54,7 +54,7 @@ class ExceptionReport
 
         foreach (array_keys($this->doReport) as $report) {
 
-            if (in_array('api', $this->exception->guards())) {
+            if (in_array('api', $exception->guards()) &&  strpos ( url()->current(),'api')) {
                 if ($this->exception instanceof $report) {
 
                     $this->report = $report;
@@ -85,7 +85,7 @@ class ExceptionReport
     public function report(){
 
 
-       /* if ($this->exception instanceof ValidationException){
+        if ($this->exception instanceof ValidationException){
 
             $data =$this->exception->validator->getMessageBag();
             $msg = collect($data)->first();
@@ -94,7 +94,7 @@ class ExceptionReport
             }
             return response()->json(['message'=>$msg,'status_code'=>400], 200);
 
-        }*/
+        }
         $message = $this->doReport[$this->report];
 
         return response()->json(['message'=>$message['0'],'status_code'=>400], 200);
