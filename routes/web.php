@@ -13,6 +13,9 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin'], function (){
 
     Route::get('logout','AdminsController@logout')->name('admin.logout'); //退出登录
 
+    Route::get('toexcel','ExcelController@index');
+    Route::get('exports','ExcelController@exports')->name('excel.exports');
+
     /**需要登录认证模块**/
     Route::middleware(['auth:admin','rbac'])->group(function (){
 
