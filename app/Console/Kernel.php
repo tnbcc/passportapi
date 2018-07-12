@@ -21,11 +21,12 @@ class Kernel extends ConsoleKernel
      *
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
-     */
-    protected function schedule(Schedule $schedule)
+        */
+        protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+     
+        // 每5分钟修改管理员ID为2的用户状态
+        $schedule->command('passport:change-adminstatus')->everyFiveMinutes();
     }
 
     /**
