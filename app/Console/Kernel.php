@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
         */
         protected function schedule(Schedule $schedule)
     {
-     
+
         // 每5分钟修改管理员ID为2的用户状态
         $schedule->command('passport:change-adminstatus')->everyFiveMinutes();
     }

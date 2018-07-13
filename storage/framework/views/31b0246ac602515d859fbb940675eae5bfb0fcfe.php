@@ -2,10 +2,12 @@
 <head>
 
     <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.css">
+
     <script src="<?php echo e(loadEdition('/js/jquery.min.js')); ?>"></script>
     <script src="<?php echo e(loadEdition('/admin/js/bootstrap.min.js')); ?>"></script>
     <script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.js"></script>
     <script src="https://cdn.bootcss.com/jquery.fileDownload/1.4.2/jquery.fileDownload.js"></script>
+
 </head>
 <body>
 <a href="javascript:void(0);" onclick="fileDown();">导出</a>
@@ -91,7 +93,7 @@
     function downloading() {
         my_loading( '加载中，请稍后...', true);
         $.ajax({
-            type: "POST",
+            type: 'post',
             dataType: "json",
             data: {
                 _token: "<?php echo e(csrf_token()); ?>",
@@ -104,7 +106,7 @@
                 if (result.status == 'success') {
                     my_loading("加载中，请稍后...", false);
                     $.fileDownload("<?php echo e(route('excel.exports')); ?>", {
-                        data: date,
+                        //data: date,
                         prepareCallback: function (url) {
                             my_loading("正在下载，请稍后...", true);
                         },

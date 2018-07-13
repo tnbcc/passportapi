@@ -1,14 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-header("Access-Control-Allow-Origin:*");
-header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
-header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With, Origin');
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Excel;
-
 class ExcelController extends Controller
 {
     public function index()
@@ -17,12 +13,12 @@ class ExcelController extends Controller
     }
     public function exports(Request $request)
     {
-        //$types = $request->input('types', 1);
+        $types = $request->input('types', 1);
 
         $users = Admin::select('name','login_count','create_ip')->get();
 
-       /* if (!$users->count()) {
-            return json([
+       if (!$users->count()) {
+            return response()->json([
                 'code' => '201',
                 'status' => 'error',
                 'msg' => '暂无数据',
@@ -30,12 +26,12 @@ class ExcelController extends Controller
         }
 
         if ($types != 1) {
-            return json([
+            return response()->json([
                 'code' => 200,
                 'status' => 'success',
                 'msg' => '导出成功'
             ]);
-        }*/
+        }
         $cellData['title'] = ['表头'];
         $cellData['columns'] = ['A1', 'B1', 'C1']; // 表头列名
         $cellData['body'] = $users;
@@ -78,7 +74,7 @@ class ExcelController extends Controller
                     $cells->setValignment('center');
                 });
             });
-        })->export('xls', ['Set-Cookie' => 'fileDownload=true; path=/']);
+        })->export('xls',['Set-Cookie' => 'fileDownload=true;path=/']);
 
     }
 }
