@@ -43,3 +43,4 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin'], function (){
         Route::resource('actions','ActionLogsController',['only'=> ['index','destroy'] ]);  //日志
     });
 });
+Route::get('test','TestController@index');
